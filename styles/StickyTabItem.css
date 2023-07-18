@@ -1,0 +1,30 @@
+.link {
+    position: relative;
+    overflow: hidden;
+}
+
+.link::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: #13e700;
+    animation: altiniCiz 2s linear forwards;
+    transition: width 0.5s;
+}
+
+.link:hover::before {
+    width: 100%;
+}
+
+@keyframes altiniCiz {
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 0;
+    }
+}

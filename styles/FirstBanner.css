@@ -1,0 +1,29 @@
+.wrapper {
+  top: 65%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+}
+
+.first-banner{
+   padding: 20px;
+}
+
+.first-banner-image{
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .first-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wrapper {
+    position: static;
+    transform: none;
+    
+  }
+
+}

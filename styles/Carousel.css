@@ -1,0 +1,42 @@
+.slider {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.slider-icons {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-btn,
+.right-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.left-btn:hover,
+.right-btn:hover{
+  color: white;
+}
+
+.left-btn {
+  margin-right: 10px;
+}
+
+.right-btn {
+  margin-left: 10px;
+}
+
+.slider-image {
+  width: 100%;
+  height: auto;
+}
+
