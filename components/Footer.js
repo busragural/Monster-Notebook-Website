@@ -2,107 +2,114 @@ import React from 'react';
 import '@/styles/Footer.css';
 import { BsEnvelope } from 'react-icons/bs'
 import { FaHeadset } from 'react-icons/fa'
-import {AiFillYoutube} from 'react-icons/ai'
+import { AiFillYoutube } from 'react-icons/ai'
+import Link from 'next/link';
 const Footer = () => {
   return (
-    <div>
-      
-        <div className='flex items-center justify-center p-2 footer-first text-white'>
-          <div className='flex '>
-            <div className='flex items-center text-lg bg-[#161617] 4'>
-              <div>
-                <BsEnvelope size={24} />
-              </div>
-              <div className='tracking-widest bg-[#323334] mx-2'>
-                <span>MESAJ GÖNDER</span>
-              </div>
-            </div>
-            <div className='flex items-center justify-center px-5 '>
-              <div className='flex items-center text-lg  bg-[#161617]'>
-                <div>
-                  <FaHeadset size={24} />
+    <div className=''>
+      <div className='all-div-ftr text-white'>
+        <div className='all-ftr'>
+          <div className='lblBanner'>
+            <div className='site-footer-mesaj w-full block '>
+              <div className='group-three flex'>
+                <div className='send-message '>
+                  <Link href={'/'} className='flex'>
+                    <div className='msg-icon-div flex items-center justify-center'> <BsEnvelope size={24} className='msg-icon' /></div>
+                    <span className='msg-text flex bg-[#323334] items-center '>MESAJ GÖNDER</span>
+                  </Link>
                 </div>
-                <div className='tracking-widest bg-[#323334] mx-2'>
-                  <span>0 850 255 11 11</span>
+                <div className='contact-number'>
+                  <Link href={'/'} className='flex'>
+                    <div className='msg-icon-div flex items-center justify-center'> <FaHeadset size={24} className='msg-icon' /></div>
+                    <span className='msg-text flex w-full bg-[#323334] items-center '>0 850 255 11 11</span>
+                  </Link>
+                </div>
+                <div className='follow-us flex items-center justify-center w-1/2'>
+                  <span className='mr-2.5'>Bizi Takip Edin</span>
+                  <Link href={'/'} className='social-link'><AiFillYoutube size={24} className='social-icon' /></Link>
+                  <Link href={'/'} className='social-link'><AiFillYoutube size={24} className='social-icon' /></Link>
+                  <Link href={'/'} className='social-link'><AiFillYoutube size={24} className='social-icon' /></Link>
+                  <Link href={'/'} className='social-link'><AiFillYoutube size={24} className='social-icon' /></Link>
+                  <Link href={'/'} className='social-link'><AiFillYoutube size={24} className='social-icon' /></Link>
                 </div>
               </div>
             </div>
           </div>
-          <div className='flex items-center text-lg '>
-            <div className='mr-4'>Bizi Takip Edin</div>
-            <div className='flex p-5 bg-[#161617] gap-2 '>
-              <AiFillYoutube size={24} className='' />
-              <AiFillYoutube size={24} className='' />
-              <AiFillYoutube size={24} className='' />
-              <AiFillYoutube size={24} className='' />
+        </div>
+      </div>
+
+
+      <div className='ftr-all '>
+        <div className='ftr-link  '>
+          <div className='ftr-div'>
+            <div className='ftr-menu'>
+              <ul >
+                <li className='ftr-menu-title'> Ürünler</li>
+                <li >Tüm Laptoplar</li>
+                <li>Oyun Bilgisayarları</li>
+                <li>Oyuncu Ekipmanları</li>
+                <li>İş Bilgisayarları</li>
+                <li>İş İstasyonları</li>
+                <li className='ftr-menu-title'>İletişim ve Mağazalar</li>
+                <li>Genel Müdürlük</li>
+                <li>Mağazalar</li>
+              </ul>
+              <ul>
+                <li className='ftr-menu-title'>Performans Donanımları</li>
+                <li>Tüm Laptoplar</li>
+                <li>Oyun Bilgisayarları</li>
+                <li>Oyuncu Ekipmanları</li>
+                <li>İletişim ve Mağazalar</li>
+                <li>Genel Müdürlük</li>
+                <li>Mağazalar</li>
+              </ul>
+              <ul>
+                <li className=' ftr-menu-title '>Kurumsal</li>
+                <li>Tüm Laptoplar</li>
+                <li>Oyun Bilgisayarları</li>
+                <li>Oyuncu Ekipmanları</li>
+                <li>İş Bilgisayarları</li>
+                <li>İş İstasyonları</li>
+                <li>İletişim ve Mağazalar</li>
+                <li>Genel Müdürlük</li>
+              </ul>
+              <ul>
+                <li className='ftr-menu-title'>Müşteri Hizmetleri</li>
+                <li>Tüm Laptoplar</li>
+                <li>Oyun Bilgisayarları</li>
+                <li>Oyuncu Ekipmanları</li>
+                <li>İş Bilgisayarları</li>
+                <li>İş İstasyonları</li>
+                <li>İletişim ve Mağazalar</li>
+                <li>Genel Müdürlük</li>
+                <li>Mağazalar</li>
+              </ul>
+              <ul>
+                <li className='ftr-menu-title'>Monster Dünyası</li>
+                <li>Tüm Laptoplar</li>
+                <li>Oyun Bilgisayarları</li>
+                <li>Oyuncu Ekipmanları</li>
+                <li>İş Bilgisayarları</li>
+                <li>İş İstasyonları</li>
+                <li>İletişim ve Mağazalar</li>
+                <li>Genel Müdürlük</li>
+                <li>Mağazalar</li>
+              </ul>
             </div>
           </div>
         </div>
-      
-      
+      </div>
 
 
-        <div className=' credit flex  justify-center gap-20 text-[#A4A4A5] text-xl py-10'>
-          <ul >
-            <li className='text-white'> Ürünler</li>
-            <li>Tüm Laptoplar</li>
-            <li>Oyun Bilgisayarları</li>
-            <li>Oyuncu Ekipmanları</li>
-            <li>İş Bilgisayarları</li>
-            <li>İş İstasyonları</li>
-            <li>İletişim ve Mağazalar</li>
-            <li>Genel Müdürlük</li>
-            <li>Mağazalar</li>
-          </ul>
-          <ul>
-            <li className='text-white'>Performans Donanımları</li>
-            <li>Tüm Laptoplar</li>
-            <li>Oyun Bilgisayarları</li>
-            <li>Oyuncu Ekipmanları</li>
-            <li>İletişim ve Mağazalar</li>
-            <li>Genel Müdürlük</li>
-            <li>Mağazalar</li>
-          </ul>
-          <ul>
-            <li className='text-white'>Kurumsal</li>
-            <li>Tüm Laptoplar</li>
-            <li>Oyun Bilgisayarları</li>
-            <li>Oyuncu Ekipmanları</li>
-            <li>İş Bilgisayarları</li>
-            <li>İş İstasyonları</li>
-            <li>İletişim ve Mağazalar</li>
-            <li>Genel Müdürlük</li>
-          </ul>
-          <ul>
-            <li className='text-white'>Müşteri Hizmetleri</li>
-            <li>Tüm Laptoplar</li>
-            <li>Oyun Bilgisayarları</li>
-            <li>Oyuncu Ekipmanları</li>
-            <li>İş Bilgisayarları</li>
-            <li>İş İstasyonları</li>
-            <li>İletişim ve Mağazalar</li>
-            <li>Genel Müdürlük</li>
-            <li>Mağazalar</li>
-          </ul>
-          <ul>
-            <li className='text-white'>Monster Dünyası</li>
-            <li>Tüm Laptoplar</li>
-            <li>Oyun Bilgisayarları</li>
-            <li>Oyuncu Ekipmanları</li>
-            <li>İş Bilgisayarları</li>
-            <li>İş İstasyonları</li>
-            <li>İletişim ve Mağazalar</li>
-            <li>Genel Müdürlük</li>
-            <li>Mağazalar</li>
-          </ul>
+      
+        <div className='ftr-copyright'>
+          <div className='ftr-cpy-wrapper'>
+             <p>©2023 Monster Bilgisayar. Tüm Hakları Saklıdır</p>
+          </div>
         </div>
-      
-      
-        <div className=' text-white flex items-center justify-center py-10 bg-[#161617]'>
-          <p>©2023 Monster Bilgisayar. Tüm Hakları Saklıdır</p>
-          <div>buraya banka seyleri gelecek</div>
-        </div>
-      
+
+     
+
     </div>
   );
 };

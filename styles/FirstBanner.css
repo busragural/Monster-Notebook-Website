@@ -1,29 +1,133 @@
-.wrapper {
-  top: 65%;
-  left: 70%;
-  transform: translate(-50%, -50%);
+
+
+.main-list ul {
+  padding: 20px 20px 20px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
 }
 
-.first-banner{
-   padding: 20px;
+.main-list ul li.single-banner {
+
+  flex: 1 100%;
+
 }
 
-.first-banner-image{
+.main-list ul li {
+  position: relative;
+}
+
+.center-img-div {
+  z-index: 1;
+  position: relative;
+  width: 100%;
+}
+
+.center-img-div img {
   width: 100%;
   height: auto;
+  max-width: 100%;
 }
 
-@media (max-width: 768px) {
-  .first-banner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.bnr-wrapper {
+  top: auto;
+  bottom: 5%;
+  transform: none;
+  right: 0;
+  padding-right: 5%;
+  position: absolute;
+  max-width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 2;
+}
 
-  .wrapper {
-    position: static;
-    transform: none;
+.main-title-1 {
+  flex: 100%;
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.38;
+  color: #00ff00;
+  margin-bottom: 12px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+
+  height: fit-content;
+}
+
+.main-title-2 {
+
+  flex: 100%;
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 33px;
+  overflow: hidden;
+  height: fit-content;
+
+}
+
+.bnr-desc {
+
+  flex: 100%;
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 46px;
+  overflow: hidden;
+}
+
+.bnr-btn-inc {
+  box-sizing: border-box;
+}
+
+.primary {
+  font-size: 24px;
+  color: #fbbd08;
+  margin-right: 72px;
+
+}
+
+
+@media (max-width: 960px) {
+  .main-list ul {
+    flex-wrap: wrap;
     
   }
+  li.single-banner{
+    flex: 1 100%;
+  }
 
+  .main-list ul li.single-banner .bnr-wrapper {
+    position: relative;
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100%;
+    max-width: none;
+    margin: 30px 0;
+   
+  }
+
+  .main-title-1 {
+    font-size: 30px;
+  }
+
+  .main-title-2 {
+    margin-bottom: 10px !important;
+  }
+
+  .bnr-desc {
+    margin-bottom: 30px;
+  }
+
+  .bnr-btn-inc {
+    display: flex;
+
+    flex-wrap: wrap;
+  }
+
+  .primary {
+    flex: 100%;
+  }
 }

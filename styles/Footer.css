@@ -1,44 +1,265 @@
-li {
-  position: relative;
-  overflow: hidden;
+
+.show-more {
+  visibility: hidden;
+
 }
 
-li::before {
-  content: "";
+.content-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.send-message {
+  width: 25%;
+  margin-right: 20px;
+}
+
+.msg-icon {
+  flex: none !important;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.msg-icon-div {
+  min-width: 46px;
+  background-color: #161617;
+  height: 46px;
+
+}
+
+.msg-text {
+  padding: 0 12px;
+  letter-spacing: 1.6px;
+  font-size: 16px;
+  width: 100% !important;
+}
+
+.contact-number {
+  width: 25%;
+}
+
+.site-footer-mesaj {
+  width: 100%;
+  display: block;
+  max-width: 1240px;
+  padding: 0 15px;
+  margin: 0 auto 0 auto;
+}
+
+.lblBanner {
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.all-ftr {
+  position: relative;
+}
+
+.all-div-ftr {
+  border-top: 1px solid #323334;
+  border-bottom: 1px solid #323334;
+  padding: 24px 0 24px;
+}
+
+.social-icon {
+  display: inline-block;
+  flex: none !important;
+  font-size: 32px;
+}
+
+
+.social-link {
+  background-color: #161617;
+  margin-right: 8px;
+  padding: 12px;
+}
+
+
+.ftr-link {
+  width: 100%;
+  display: table;
+  max-width: 1240px;
+  padding: 0 15px;
+  margin: 0 auto 0 auto;
+}
+
+.ftr-all {
+  background-color: #1B1C1D;
+  position: relative;
+  padding: 50px 0 50px 0;
+
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+
+}
+
+.ftr-div {
+  width: 100%;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+}
+
+.ftr-menu {
+  width: 100%;
+  display: flex;
+}
+
+.ftr-menu ul {
+  display: inline-block;
+  width: 20%;
+  vertical-align: top;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.ftr-menu ul li {
+  padding: 0 0 5px 0;
+  position: relative;
+  line-height: 1;
+  color: #a4a4a5;
+  display: flex;
+  letter-spacing: 0.5px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  cursor: pointer;
+
+}
+
+
+.ftr-menu-title {
+  color: white !important;
+}
+
+.ftr-menu ul li::before {
+  content: '';
   position: absolute;
   left: 0;
   bottom: 0;
   width: 0;
   height: 1px;
-  background-color: #13e700;
-  animation: altiniCiz 2s linear forwards;
-  transition: width 0.5s;
+  background-color: #00ff00;
+  visibility: hidden;
+  transition: width 0.9s ease;
 }
 
-li:hover::before {
+.ftr-menu ul li:hover::before {
+  visibility: visible;
   width: 100%;
 }
 
-@keyframes altiniCiz {
-  from {
-    left: -100%;
-  }
-
-  to {
-    left: 0;
-  }
+.ftr-menu ul li:hover{
+  color: white;
 }
 
-.credit{
-  border-bottom: 4px solid #00FF00;
-}
-  
 
-.footer-first{
-  
-  border-top: 1px  solid #323334;
-  border-bottom: 1px  solid #323334;
-  max-width: 1240px;
+.ftr-copyright {
+  background-color: #161617;
+  border-top: 4px solid #00ff00;
+  text-align: center;
+}
+
+.ftr-cpy-wrapper {
   width: 100%;
-  
+  margin: 0 auto 0 auto;
+  max-width: 1230px;
+  color: #fff;
+  padding: 40px 15px 30px 15px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+@media (max-width: 960px) {
+
+  .show-more {
+    visibility: visible;
+  }
+
+  .group-three {
+
+    margin: 0 0 10px 0;
+    flex-wrap: wrap;
+
+  }
+
+  .send-message {
+    margin: 0 0 10px 0;
+
+  }
+
+  .site-footer-mesaj {
+    padding: 0 40px;
+  }
+
+  .contact-number {
+    margin: 0 0 10px 0;
+  }
+
+  .group-three>div {
+    flex: 1 100%;
+  }
+
+  .follow-us {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 40px 0 10px 0;
+  }
+
+  .follow-us>span {
+    flex: 100%;
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+
+  .ftr-all {
+    background: #1B1C1D;
+    padding: 0;
+    position: static;
+  }
+
+  .ftr-link {
+    padding: 0px;
+  }
+
+  .ftr-div {
+    width: 100%;
+  }
+
+  .ftr-menu {
+    display: block;
+    padding: 0 40px;
+  }
+
+  .ftr-menu ul {
+    padding-left: 0;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #323334;
+  }
+  .ftr-menu ul li {
+    display: flex;
+    width: 100%;
+    padding: 12px 20px;
+    align-items: center;
+    font-size: 20px;
+    text-align: left;
+    
+  }
+
+
 }

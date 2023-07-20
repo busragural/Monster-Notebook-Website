@@ -1,11 +1,22 @@
-import React from 'react'
-import '@/styles/ContentFooter.css'
+'use client'
+import React, { useState } from 'react';
+import '@/styles/ContentFooter.css';
 
 const ContentFooter = () => {
-    return (
-        <div className=' text-[#A4A4A5] tracking-wide content-div '>
-            <div className='content-container'>
-            <p className='content'>Oynadığınız oyunlarla bütünleşmek istiyorsanız ve kullandığınız yazılımlarla yaratıcılığınızın doruklarına çıkmayı hedefliyorsanız, Monster Notebook size beklentilerinizin de ötesinde bir dünya sunuyor.</p>
+  const [showMore, setShowMore] = useState(true);
+
+  const handleClick = () => {
+    setShowMore(!showMore);
+  };
+
+  return (
+    
+    <div className='text-[#A4A4A5] tracking-wide content-div'>
+      
+      <div className='content-container'>
+        <p className='content'>Oynadığınız oyunlarla bütünleşmek istiyorsanız ve kullandığınız yazılımlarla yaratıcılığınızın doruklarına çıkmayı hedefliyorsanız, Monster Notebook size beklentilerinizin de ötesinde bir dünya sunuyor.</p>
+        {showMore && (
+          <>
             <p className='content'>En yüksek performanslı notebook modellerini, en erişilebilir fiyatlarla kullanıcılarla buluşturan Monster, yılların verdiği sektör tecrübesiyle ürün gamını şekillendirerek tüm ihtiyaçlarınıza uygun notebook modelleri hazırlıyor.</p>
             <p className='content'>İsimlerini Türk mitolojisinden alan notebook serilerini; Gaming, Business ve Workstation kategorileri altında bir araya getiren Monster, üst seviye donanım bileşenleriyle güçlendirilen taşınabilir bilgisayarları sayesinde masaüstü çalışma konforunu mobil platformda yaşamanızı sağlıyor.</p>
             <p className='content'>Avantajlı fiyatlara konumlanan Abra serisi, Full HD çözünürlükte oyun oynayabilmenizi mümkün kılıyor.</p>
@@ -16,9 +27,20 @@ const ContentFooter = () => {
             <p className='content'>Ayrıca Monster, satış sonrasında da memnuniyetinizi daimi kılmayı garanti ediyor. Notebooklarınız için ömür boyu ücretsiz bakım hizmeti, satın aldıktan sonra ilk 15 gün içinde çalıştıramadığınız yazılım ve oynayamadığınız oyunla karşılaşırsanız anında iade olanağı, ilk 30 gün içinde ekranda meydana gelebilecek tek bir ölü piksel neticesinde bile panel değişimi gibi birçok imkan ve güvence, Monster’ın kullanıcılarına verdiği değeri gösteriyor. Yaşayabileceğiniz sorunlara karşı daima yanınızda olan ve bu sorunlara kısa sürede müdahale eden Monster teknik servisi oyun keyfinizi ve çalışmalarınızı dilediğiniz gibi sürdürebilmenize yardımcı oluyor.</p>
             <p className='content'>Yeni ve güçlü bir dizüstü bilgisayar almayı amaçlıyorsanız, Monster’ın kullanıcı dostu ve güvenli web sitesi üzerinden dilediğiniz modeli inceleyip hemen sepetinize ekleyebilirsiniz.</p>
             <p className='content'>Aynı zamanda; İstanbul, Ankara, İzmir ve Lefkoşa’daki Monster mağazalarını da ziyaret edebilir, hem Monster’ın kendine özgü dünyasını keşfedebilir hem de gereksinimlerinize uygun bir notebook edinebilirsiniz.</p>
-</div>
-        </div>
-    )
-}
+          </>
+        )}
+      </div>
+      <div className='text-[#00FF00]'>
+      {showMore && (
+        <button className='show-more  ' onClick={handleClick}>Daha az göster</button>
+      )}
+      {!showMore && (
+        <button className='show-more ' onClick={handleClick}>Daha fazla göster</button>
+      )}
+      </div>
+      
+    </div>
+  );
+};
 
-export default ContentFooter
+export default ContentFooter;

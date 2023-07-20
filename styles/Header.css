@@ -1,3 +1,31 @@
-h1{
+h1 {
     color: white;
+}
+
+@media (max-width: 960px) {
+    .mini-tab {
+        display: none;
+    }
+}
+
+.img-logo {
+    height: 65px;
+    width: auto;
+}
+
+.input-sec {
+    flex-grow: 1;
+}
+
+@media (max-width: 960px) {
+    .img-logo {
+        height: 30px;
+        width: auto;
+    }
+    .input-wrapper{
+        display: none;
+    }
+    
+    
+    
 }

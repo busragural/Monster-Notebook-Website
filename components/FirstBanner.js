@@ -6,29 +6,39 @@ import Link from 'next/link';
 
 const FirstBanner = () => {
   return (
-    <div className='ban-div relative '>
 
-      <div className='first-banner '>
-        <Image src={Banner} className='first-banner-image ' />
+    <div className='lblBannerFirst'>
+      <ul>
+        <div className='main-list'>
+          <ul>
+          <li className='single-banner rightBottom'>
+              <div className='center-img-div'>
+                <picture>
+                <Image src={Banner} className='first-banner-image ' />
+                </picture>
+              </div>
+              <div className='bnr-wrapper'>
+                <div className='main-title-1'> MÜKEMMEL OYUN DENEYİMİ</div>
+                <div className='main-title-2'>OYUNDA KENDİNİZİ KAYBETSENİZ BİLE!</div>
+                <div className='bnr-desc'> 
+                  <p>Monster Oyun Bilgisayarları Intel ve Nvidia’nın en üst donanımları ile, maksimum performans ve en mükemmel oyun deneyimini sunar. Kendi belirleyeceğiniz donanımlar ve oynadığınız oyunların gereksinimlerine göre hayalinizdeki bilgisayarı şimdi tasarlayın!</p>
+                </div>
+                <div className='bnr-btn-inc flex'>
+                  <Link href={'/'} className='primary'>
+                    <div>OYUN BİLGİSAYARLARI</div>
+                  </Link>
+                  <Link href={'/'} className='primary'>
+                    <div>TÜM LAPTOPLAR</div>
+                  </Link>
+                </div>
+              </div>
+          </li>
+          </ul>
         </div>
-        <div className='wrapper absolute'>
-          <div className='flex text-[#00FF00] text-4xl mb-3'>
-            MÜKEMMEL OYUN DENEYİMİ.
-          </div>
-          <div className='flex text-white text-3xl mb-4'>
-            OYUNDA KENDİNİZİ KAYBETSENİZ BİLE!
-          </div>
-          <div className='flex text-white text-xl mb-5'>
-            Monster Oyun Bilgisayarları Intel ve Nvidia’nın en üst donanımları ile, maksimum performans ve en mükemmel oyun deneyimini sunar. Kendi belirleyeceğiniz donanımlar ve oynadığınız oyunların gereksinimlerine göre hayalinizdeki bilgisayarı şimdi tasarlayın!
-          </div>
-          <div className='flex text-[#FBBD08] text-2xl '>
-            <Link href={'/'} className='mr-4'>OYUN BİLGİSAYARLARI</Link>
-            <span>|</span>
-            <Link href={'/'} className='ml-4'>TÜM LAPTOPLAR</Link>
-          </div>
-        </div>
-      
+      </ul>
     </div>
+
+
   );
 };
 

@@ -7,6 +7,7 @@ import { IoMdSearch } from 'react-icons/io';
 import HeaderTabItem from './HeaderTabItem'
 import { BsPersonCircle } from 'react-icons/bs'
 import { PiShoppingCartLight } from 'react-icons/pi'
+import { GiHamburgerMenu } from 'react-icons/gi'
 const Header = () => {
 
     const headerTab = [
@@ -46,72 +47,65 @@ const Header = () => {
     ]
 
     return (
-        // en genel div 
-
-        <div className='px-20 py-3 bg-black tracking-wider  ' >
-            {/* ustteki sari kucuk kisim*/}
-            <div className='md:flex items-center justify-end text-[#FBBD08] gap-4 text-xs mb-5 lg:opacity-100 opacity-0'>
-                {
-
-                    headerTab.map((item, key) => (
-                        <HeaderTabItem item={item} key={key} />
-                    ))
-                }
+        <div className='header-div-pc px-10 py-2 bg-black tracking-wider'>
+          {/* ustteki sari kucuk kisim*/}
+          <div className='mini-tab flex items-center justify-end text-[#FBBD08] text-xs gap-4 py-2'>
+            {headerTab.map((item, key) => (
+              <HeaderTabItem item={item} key={key} />
+            ))}
+          </div>
+    
+          <div className='flex items-center justify-between py-1'>
+            <div className='flex-none'>
+              <Link href={'/'}>
+                <Image src={logoPic} className='img-logo' />
+              </Link>
             </div>
-
-            <div className=' xl:flex items-center  ' >
-
-                {/* logo divi*/}
-                <div className='  '>
-                    <Link href={'/'} >
-                        <Image className=''
-                            src={logoPic}
-
-                            width={250}
-                            height={65}
-
-                            alt=""
-                        />
-                    </Link>
-                </div>
-                <div className='flex flex-1 items-center justify-between'>
-                    {/* search divi */}
-                    <div className='flex items-center bg-[#131414] mx-4 px-3 py-2 border border-zinc-600 '>
-                        <input type='text' placeholder='Arama Yap' maxLength={55} className='flex flex-1 bg-transparent' />
-                        <IoMdSearch className='fill-gray-500' />
-                    </div>
-
-                    {/* sagdaki üc kutu divi */}
-                    <div className='flex items-center  gap-4'>
-                        {/* 1.kutu */}
-                        <div className='text-[#00FF00] border border-zinc-600 px-2 py-2 hidden md:inline-flex'>
-                            Harici Ödeme
-                        </div>
-
-                        {/* 2.kutu */}
-                        <div className='text-white border border-zinc-600 px-3 py-2 flex items-center gap-1'>
-                            <div>
-                                <BsPersonCircle size={24} />
-                            </div>
-                            <div>
-                                <div className='hidden md:inline-flex'>Giriş yap</div>
-                                <div className='text-xs -my-2 text-[#FBBD08] hidden md:inline-flex'>Kayıt ol</div>
-                            </div>
-                        </div>
-
-                        {/* 3.kutu */}
-                        <div className='text-white border border-zinc-600 px-3 py-2 flex items-center gap-1'>
-                            <div>
-                                <PiShoppingCartLight size={24} />
-                            </div>
-                            <div className='hidden md:inline-flex'>Sepetim</div>
-                        </div>
-                    </div>
-                </div>
-
+    
+            <div className='input-wrapper flex flex-grow items-center justify-center bg-[#131414] mx-4 px-3 py-2 border border-zinc-600'>
+              <input
+                type='text'
+                placeholder='Arama Yap'
+                maxLength={55}
+                className='input-sec bg-transparent'
+              />
+              <IoMdSearch className='fill-gray-500' />
             </div>
+    
+            <div className='flex items-center gap-3'>
+              <div className='text-[#00FF00] border border-zinc-600 px-2 py-2 hidden md:inline-flex'>
+                Harici Ödeme
+              </div>
+              <div className='text-white border border-zinc-600 px-3 py-2 flex items-center gap-1'>
+                <div>
+                  <BsPersonCircle size={24} />
+                </div>
+                <div className='hidden md:inline-flex'>
+                  <div className=''>Giriş yap</div>
+                  <div className=' text-xs -my-2 text-[#FBBD08]'>Kayıt ol</div>
+                </div>
+              </div>
+              <div className='text-white border border-zinc-600 px-3 py-2 flex items-center gap-1'>
+                <div>
+                  <PiShoppingCartLight size={24} />
+                </div>
+                <div className='hidden md:inline-flex'>Sepetim</div>
+              </div>
+            </div>
+          </div>
+    
+          {/* Mobil görünümde logonun altına alınacak search bar'ı */}
+          <div className='input-wrapper-mobile flex items-center justify-center bg-[#131414] mx-4 px-3 py-2 border border-zinc-600 md:hidden'>
+            <input
+              type='text'
+              placeholder='Arama Yap'
+              maxLength={55}
+              className='input-sec bg-transparent'
+            />
+            <IoMdSearch className='fill-gray-500' />
+          </div>
         </div>
-    )
+      );
 }
 
 export default Header
