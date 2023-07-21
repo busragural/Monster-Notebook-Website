@@ -1,20 +1,13 @@
-.content{
+.content {
     max-width: 1240px;
     margin: 0 0 15px 0;
     padding: 0px 40px;
     width: 100%;
-    
+
 }
 
-
-.content-div{
-    display: flex;
-    justify-content: center;
+.content-div {
     margin: 60px;
 }
 
-@media  (max-width: 960px) {
-    
-
-  
-}
+@media (max-width: 960px) {}

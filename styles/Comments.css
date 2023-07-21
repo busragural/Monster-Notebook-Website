@@ -1,170 +1,105 @@
 
-.cmnt-all-div{
-    max-width: 100%;
-    width: 100%;
-    background: #131414;
-}
-
-.cmnt-main{
+.cmnt-main {
     margin-top: 50px;
-    box-sizing: border-box;
 }
 
-.cmnt-container{
+.cmnt-container {
     margin-bottom: 100px;
     padding: 0 100px;
     max-width: 1410px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
     z-index: 1;
 }
 
-.cmnt-title{
-    position: relative;
+.cmnt-title {
     text-align: left !important;
-
 }
 
-.cmnt-title h3{
-     font-size: 36px!important; 
-  
-    
-    text-align: center;
-    margin: 20px 0;
+.cmnt-title h3 {
+    font-size: 36px !important;
     font-weight: normal;
     letter-spacing: 0.5px;
-    display: inline-block;
-    color: white;
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-
-
 }
 
-.more-cmnt{
-    position: absolute;
-    /* right: 0; */
-    color: #00ff00;
+.more-cmnt {
     top: 45%;
     right: 20px;
     font-size: 16px !important;
-    align-items: center;
-    
 }
 
-.cmnt-swipper-main{
-    overflow: visible;
+.cmnt-swipper-main {
     z-index: 11;
-    position: relative;
-     overflow: hidden; 
-    width: 100%;
-    
 }
 
-.cmnt-swipper-main ul{
-  display: flex;
-  flex-wrap: nowrap;
-  position: relative;
-    width: 100%;
-    height: 100%;
+.cmnt-swipper-main ul {
     z-index: 1;
-    box-sizing: content-box;
 }
 
 .cmnt-swipper-main ul li {
     width: 300px;
-    padding: 0 8px 16px 8px;
     min-height: 100px;
-    position: relative;
     z-index: 1;
-    height: auto;
 }
 
-.cmnt-inner{
+.cmnt-inner {
     background: none !important;
-
     border: 1px solid #323334;
-    position: relative;
-    padding-bottom: 40px;
-    overflow: hidden;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0;
-    background-color: #161617;
     transition: all 0.2s ease;
-    height: 100%;
     flex-flow: column nowrap;
 }
 
-.cmnt-inner:hover{
-border: 1px solid #00ff00;
+.cmnt-inner:hover {
+    border: 1px solid #00ff00;
 }
 
-.cmnt-mask{
+.cmnt-mask {
     background: none !important;
-    position: relative;
-    padding: 20px;
 }
 
-.cmnt-mask > div{
+.cmnt-mask>div {
     flex: 0;
 }
 
-.cmnt-image{
-    position: relative;
-    overflow: hidden;
+.cmnt-image {
     min-height: 130px;
 }
-.cmnt-link{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: auto;
-    display: block;
+
+.cmnt-link {
     margin: 0 auto;
 }
 
-.cmnt-content{
+.cmnt-content {
     flex: 0;
-    width: 100%;
-    text-align: left;
 }
 
-.cmnt-content-mask{
-    padding: 0;
-    width: 100%;
-    height: 100%;
+.cmnt-content-mask {
+    
     box-sizing: border-box;
-    display: flex;
-    flex-wrap: wrap;
     align-items: flex-end;
     justify-content: flex-end;
 }
 
-.cmnt-content-mask > div{
+.cmnt-content-mask>div {
     width: 100%;
 }
 
-.cmnt-content-bottom{
+.cmnt-content-bottom {
     z-index: inherit;
-    position: relative;
     margin-bottom: 0 !important;
     padding: 0 15px 15px 15px !important;
-    overflow: hidden;
 }
 
 
-.mons-prd-name{
+.mons-prd-name {
     color: #00ff00 !important;
     overflow: hidden;
     max-height: none !important;
     min-height: 0 !important;
-     width: 100%;
-     display: block;
+    width: 100%;
+    display: block;
     font-size: 18px;
     line-height: 1.25;
     text-align: left;
@@ -174,13 +109,13 @@ border: 1px solid #00ff00;
     line-height: 1.25;
 }
 
-.mons-prd-name-content{
+.mons-prd-name-content {
     font-size: 15px;
     color: white;
     text-align: left;
 }
 
-.mons-prd-name-cat{
+.mons-prd-name-cat {
     text-overflow: ellipsis;
     overflow: hidden;
     font-size: 14px !important;
@@ -192,15 +127,13 @@ border: 1px solid #00ff00;
 }
 
 
-@media(max-width: 960px)  {
-    .more-cmnt{
+@media(max-width: 960px) {
+    .more-cmnt {
         display: none !important;
     }
-    .cmnt-container{
+
+    .cmnt-container {
         margin-bottom: 40px !important;
     }
-    
+
 }
-
-
-

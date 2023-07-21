@@ -12,28 +12,25 @@ const StickyTabItem = ({ item }) => {
                 <div className='link'>
                     {item.name}
                 </div>
-                
                 <div className='hidden group-hover/item:block bg-[#131414] '>
                     <div className='flex items-center'>
-                        <Image 
-                        src={picture}
-                        width={250}
-                        height={300} 
-                        alt=""
+                        <Image
+                            src={picture}
+                            width={250}
+                            height={300}
+                            alt=""
                         />
 
-                        <Image 
-                        src={picture}
-                        width={250}
-                        height={300}
-                        alt=""
-                         />
+                        <Image
+                            src={picture}
+                            width={250}
+                            height={300}
+                            alt=""
+                        />
                     </div>
-                    
+
                 </div>
             </div>
-
-
         </Link>
     )
 }

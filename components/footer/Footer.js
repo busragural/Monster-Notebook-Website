@@ -101,14 +101,14 @@ const Footer = () => {
       </div>
 
 
-      
-        <div className='ftr-copyright'>
-          <div className='ftr-cpy-wrapper'>
-             <p>©2023 Monster Bilgisayar. Tüm Hakları Saklıdır</p>
-          </div>
-        </div>
 
-     
+      <div className='ftr-copyright'>
+        <div className='ftr-cpy-wrapper'>
+          <p>©2023 Monster Bilgisayar. Tüm Hakları Saklıdır</p>
+        </div>
+      </div>
+
+
 
     </div>
   );

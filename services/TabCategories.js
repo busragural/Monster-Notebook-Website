@@ -13,8 +13,8 @@ export const getChildData = async () => {
     });
 
     const bannerData = response.data.data;
-    console.log("data", bannerData);
-    console.log("json", bannerData.length);
+    // console.log("data", bannerData);
+    // console.log("json", bannerData.length);
     return bannerData;
   } catch (error) {
     console.error('Error:', error);
@@ -38,8 +38,8 @@ export const getParentData = async () => {
     });
 
     const bannerData = response.data.data;
-    console.log("data", bannerData);
-    console.log("json", bannerData.length);
+    // console.log("data", bannerData);
+    // console.log("json", bannerData.length);
     return bannerData;
   } catch (error) {
     console.error('Error:', error);

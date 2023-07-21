@@ -13,6 +13,7 @@
     background-color: #13e700;
     animation: altiniCiz 2s linear forwards;
     transition: width 0.5s;
+
 }
 
 .link:hover::before {
@@ -27,4 +28,11 @@
     to {
         left: 0;
     }
+}
+
+.sticky-div {
+    border-image: linear-gradient(to left, #d51646, #9d0574, #830a58, #bd034b, #bb3b39, #bd393a, #ba044f, #96023c, #51061c);
+    border-width: 1px 0 0 0;
+    border-style: solid;
+    border-image-slice: 1;
 }

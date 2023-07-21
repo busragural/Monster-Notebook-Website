@@ -10,9 +10,9 @@ const ContentFooter = () => {
   };
 
   return (
-    
-    <div className='text-[#A4A4A5] tracking-wide content-div'>
-      
+
+    <div className='content-div text-[#A4A4A5] tracking-wide flex justify-center '>
+
       <div className='content-container'>
         <p className='content'>Oynadığınız oyunlarla bütünleşmek istiyorsanız ve kullandığınız yazılımlarla yaratıcılığınızın doruklarına çıkmayı hedefliyorsanız, Monster Notebook size beklentilerinizin de ötesinde bir dünya sunuyor.</p>
         {showMore && (
@@ -31,14 +31,14 @@ const ContentFooter = () => {
         )}
       </div>
       <div className='text-[#00FF00]'>
-      {showMore && (
-        <button className='show-more  ' onClick={handleClick}>Daha az göster</button>
-      )}
-      {!showMore && (
-        <button className='show-more ' onClick={handleClick}>Daha fazla göster</button>
-      )}
+        {showMore && (
+          <button className='show-more  ' onClick={handleClick}>Daha az göster</button>
+        )}
+        {!showMore && (
+          <button className='show-more ' onClick={handleClick}>Daha fazla göster</button>
+        )}
       </div>
-      
+
     </div>
   );
 };
