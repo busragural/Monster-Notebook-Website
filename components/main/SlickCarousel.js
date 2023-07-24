@@ -13,11 +13,13 @@ const SlickCarousel = ({ data }) => {
   const [bannerContent, setBannerContent] = useState([]);
   const [bannerLink, setBannerLink] = useState([]);
   const [bannerColor, setBannerColor] = useState([]);
+  const [bannerMobileImg, setBannerMobileImg] = useState([]);
 
   useEffect(() => {
     if (data && data.length > 0) {
 
       const imageUrls = [];
+      const mobileImageUrls = [];
       const imageTitles = [];
       const imageContent = [];
       const imageLinkText = [];
@@ -28,6 +30,12 @@ const SlickCarousel = ({ data }) => {
         if (prmImgParam) {
           imageUrls.push(`https://img-monsternotebook.mncdn.com${prmImgParam.value}`);
         }
+
+        const prmMobileImgParam = item.parameters.find(param => param.key === 'prmMobileImg');
+        if (prmMobileImgParam) {
+          mobileImageUrls.push(`https://img-monsternotebook.mncdn.com${prmMobileImgParam.value}`);
+        }
+
 
         const prmTitleParam = item.parameters.find(param => param.key === 'prmTitle');
         if (!(item.parameters.find(param => param.key === 'prmShowMobile'))) {
@@ -56,7 +64,7 @@ const SlickCarousel = ({ data }) => {
       setBannerContent(imageContent);
       setBannerLink(imageLinkText);
       setBannerColor(imageColor);
-
+      setBannerMobileImg(mobileImageUrls);
 
     }
   }, [data]);
@@ -75,8 +83,8 @@ const SlickCarousel = ({ data }) => {
 
     autoplay: false,
     autoplaySpeed: 5000,
-    customPaging: () => <CustomDots />
-
+    customPaging: () => <CustomDots />,
+    
   };
 
   return (
@@ -92,6 +100,7 @@ const SlickCarousel = ({ data }) => {
                     <div className='slider-img-div w-full h-full relative '>
                       <picture >
                         <img src={url} className='slider-img w-full absolute max-w-none object-cover' />
+                        <source media='(max-width:960px)' srcSet={bannerMobileImg}/>
                       </picture>
                     </div>
                     <div className='slider-content-wrapper absolute'>
@@ -120,7 +129,7 @@ const SlickCarousel = ({ data }) => {
 
 export default SlickCarousel;
 
-const CustomDots = ({ onClick, active }) => (
+export const CustomDots = ({ onClick, active }) => (
   <div className={`custom-dot ${active ? 'active' : ''}`} onClick={onClick} />
 );
 

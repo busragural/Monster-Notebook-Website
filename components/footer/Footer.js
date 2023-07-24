@@ -1,10 +1,14 @@
-import React from 'react';
+'use client'
+import Reac from 'react';
 import '@/styles/Footer.css';
 import { BsEnvelope } from 'react-icons/bs'
 import { FaHeadset } from 'react-icons/fa'
 import { AiFillYoutube } from 'react-icons/ai'
 import Link from 'next/link';
+
+
 const Footer = () => {
+
   return (
     <div className=''>
       <div className='all-div-ftr text-white'>
@@ -38,69 +42,68 @@ const Footer = () => {
         </div>
       </div>
 
-
-      <div className='ftr-all '>
-        <div className='ftr-link  '>
-          <div className='ftr-div'>
-            <div className='ftr-menu'>
-              <ul >
-                <li className='ftr-menu-title'> Ürünler</li>
-                <li >Tüm Laptoplar</li>
-                <li>Oyun Bilgisayarları</li>
-                <li>Oyuncu Ekipmanları</li>
-                <li>İş Bilgisayarları</li>
-                <li>İş İstasyonları</li>
-                <li className='ftr-menu-title'>İletişim ve Mağazalar</li>
-                <li>Genel Müdürlük</li>
-                <li>Mağazalar</li>
-              </ul>
-              <ul>
-                <li className='ftr-menu-title'>Performans Donanımları</li>
-                <li>Tüm Laptoplar</li>
-                <li>Oyun Bilgisayarları</li>
-                <li>Oyuncu Ekipmanları</li>
-                <li>İletişim ve Mağazalar</li>
-                <li>Genel Müdürlük</li>
-                <li>Mağazalar</li>
-              </ul>
-              <ul>
-                <li className=' ftr-menu-title '>Kurumsal</li>
-                <li>Tüm Laptoplar</li>
-                <li>Oyun Bilgisayarları</li>
-                <li>Oyuncu Ekipmanları</li>
-                <li>İş Bilgisayarları</li>
-                <li>İş İstasyonları</li>
-                <li>İletişim ve Mağazalar</li>
-                <li>Genel Müdürlük</li>
-              </ul>
-              <ul>
-                <li className='ftr-menu-title'>Müşteri Hizmetleri</li>
-                <li>Tüm Laptoplar</li>
-                <li>Oyun Bilgisayarları</li>
-                <li>Oyuncu Ekipmanları</li>
-                <li>İş Bilgisayarları</li>
-                <li>İş İstasyonları</li>
-                <li>İletişim ve Mağazalar</li>
-                <li>Genel Müdürlük</li>
-                <li>Mağazalar</li>
-              </ul>
-              <ul>
-                <li className='ftr-menu-title'>Monster Dünyası</li>
-                <li>Tüm Laptoplar</li>
-                <li>Oyun Bilgisayarları</li>
-                <li>Oyuncu Ekipmanları</li>
-                <li>İş Bilgisayarları</li>
-                <li>İş İstasyonları</li>
-                <li>İletişim ve Mağazalar</li>
-                <li>Genel Müdürlük</li>
-                <li>Mağazalar</li>
-              </ul>
+    
+      <div className='ftr-all'>
+          <div className='ftr-link'>
+            <div className='ftr-div'>
+              <div className='ftr-menu'>
+                <ul>
+                  <li className='ftr-menu-title'> Ürünler</li>
+                  <li>Tüm Laptoplar</li>
+                  <li>Oyun Bilgisayarları</li>
+                  <li>Oyuncu Ekipmanları</li>
+                  <li>İş Bilgisayarları</li>
+                  <li>İş İstasyonları</li>
+                  <li className='ftr-menu-title'>İletişim ve Mağazalar</li>
+                  <li>Genel Müdürlük</li>
+                  <li>Mağazalar</li>
+                </ul>
+                <ul>
+                  <li className='ftr-menu-title'>Performans Donanımları</li>
+                  <li>Tüm Laptoplar</li>
+                  <li>Oyun Bilgisayarları</li>
+                  <li>Oyuncu Ekipmanları</li>
+                  <li>İletişim ve Mağazalar</li>
+                  <li>Genel Müdürlük</li>
+                  <li>Mağazalar</li>
+                </ul>
+                <ul>
+                  <li className=' ftr-menu-title '>Kurumsal</li>
+                  <li>Tüm Laptoplar</li>
+                  <li>Oyun Bilgisayarları</li>
+                  <li>Oyuncu Ekipmanları</li>
+                  <li>İş Bilgisayarları</li>
+                  <li>İş İstasyonları</li>
+                  <li>İletişim ve Mağazalar</li>
+                  <li>Genel Müdürlük</li>
+                </ul>
+                <ul>
+                  <li className='ftr-menu-title'>Müşteri Hizmetleri</li>
+                  <li>Tüm Laptoplar</li>
+                  <li>Oyun Bilgisayarları</li>
+                  <li>Oyuncu Ekipmanları</li>
+                  <li>İş Bilgisayarları</li>
+                  <li>İş İstasyonları</li>
+                  <li>İletişim ve Mağazalar</li>
+                  <li>Genel Müdürlük</li>
+                  <li>Mağazalar</li>
+                </ul>
+                <ul>
+                  <li className='ftr-menu-title'>Monster Dünyası</li>
+                  <li>Tüm Laptoplar</li>
+                  <li>Oyun Bilgisayarları</li>
+                  <li>Oyuncu Ekipmanları</li>
+                  <li>İş Bilgisayarları</li>
+                  <li>İş İstasyonları</li>
+                  <li>İletişim ve Mağazalar</li>
+                  <li>Genel Müdürlük</li>
+                  <li>Mağazalar</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-
+      
 
       <div className='ftr-copyright'>
         <div className='ftr-cpy-wrapper'>

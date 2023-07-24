@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Slider from 'react-slick';
 import Link from 'next/link';
 import '@/styles/Comments.css'
+import '@/styles/SlickCarousel.css'
 
 const Comments = () => {
     const settings = {
@@ -16,6 +17,7 @@ const Comments = () => {
         slidesToScroll: 1,
         arrows: false,
         dots: true,
+        customPaging: () => <CustomDots />,
         focusOnSelect: true,
         responsive: [
             {
@@ -277,3 +279,6 @@ const Comments = () => {
 }
 
 export default Comments;
+export const CustomDots = ({ onClick, active }) => (
+    <div className={`custom-dot ${active ? 'active' : ''}`} onClick={onClick} />
+  );

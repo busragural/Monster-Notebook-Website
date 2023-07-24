@@ -20,7 +20,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
 
       <body className={saira_condensed.className}>
-        <Header />
+        <Header  data = {dataParentCat}/>
         <StickyTab data = {dataParentCat}/>
         <main>
           {children}
