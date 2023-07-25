@@ -11,14 +11,14 @@ const StickyTabItem = ({ item, catData }) => {
     return (
         <>
             <Link href={'/'} className='s-link' >
-                <div className='group/item  '>
+                <div className='dropdown'>
                     <div className='link'>
                         {item}
                     </div>
-                    <div className='hidden group-hover/item:block bg-[#131414]  '>
-                        <div className='flex items-center justify-center '>
+                    <div className='dropdown-content'>
+                        <div className=' flex items-center justify-center w-full h-full '>
                             {item === 'Tüm Laptoplar' && catData.some((k) => k.name === 'Tüm Laptoplar') ? (
-                                <div className='flex items-center justify-center relative '>
+                                <div className='flex items-center justify-center '>
 
                                     {catData[0].childCategories.map((i) =>
                                         i.childCategories.map((j) => (<div >

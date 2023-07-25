@@ -36,3 +36,31 @@
     border-style: solid;
     border-image-slice: 1;
 }
+
+.dropdown{
+position: relative;
+  display: inline-block;
+}
+
+.link{
+    cursor: pointer;
+}
+
+.dropdown-content{
+    display: none;
+  position: absolute;
+  width: 100%!important;
+  height: 100%!important;
+  left: 0;
+  right: 0;
+ 
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    display: flex;
+}
+
+
+
+

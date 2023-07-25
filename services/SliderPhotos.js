@@ -14,7 +14,7 @@ export const getBannerData = async () => {
         'x-monster-client-channel': 'MobileAppTr',
         'Content-Type': 'application/json',
         'Cache-Control': 'no-cache',
-        'Ocp-Apim-Subscription-Key': process.env.API_KEY_SLIDER_BANNER
+        'Ocp-Apim-Subscription-Key': process.env.API_KEY_SLIDER_BANNER 
       }
     });
 

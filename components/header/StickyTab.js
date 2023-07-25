@@ -1,6 +1,11 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import StickyTabItem from './StickyTabItem'
+import Link from 'next/link';
+import Image from 'next/image';
+import '@/styles/StickyTab.css';
+import '@/styles/StickyTabItem.css'
+import logoPic from '@/assets/monster-logo.svg'
 
 
 export const StickyTab = ({ data }) => {
@@ -36,13 +41,37 @@ export const StickyTab = ({ data }) => {
         <div className='s-main'>
           <div className='s-box'>
             <nav className='s-nav-main '>
-              <ul >
+              <ul className=''>
                 {
                   catName.map((item, key) => (
                     <li className=''>
 
+                      <Link href={'/'} className='s-link link '>
+                        {item}
+                      </Link>
+                      <div className='sub-nav '>
+                        <div className='sub-nav-wrapper'>
+                          <div className='sub-nav-links'>
+                            <div className='sub-nav-lvl2'>
+                              <div className='sub-nav-list'>
+                                <ul className='sub-swipper'>
+                                  <li className='sub-li'>
+                                    <Link href={'/'} className='sub-li-li'>
+                                    
 
-                      <StickyTabItem item={item} key={key} catData={catData} />
+                                    </Link>
+
+                                  </li>
+
+                                </ul>
+
+                              </div>
+
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
                     </li>
                   ))
                 }

@@ -4,7 +4,8 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import { Saira_Condensed } from 'next/font/google'
 import { StickyTab } from '@/components/header/StickyTab'
-import { getParentData } from '@/services/TabCategories'
+import { getAksesuar, getGamePCs, getMonitor, getParentData, getWorkPCs, getWorkStations } from '@/services/TabCategories'
+import Categories from '@/components/header/Categories'
 
 const inter = Inter({ subsets: ['latin'] })
 const saira_condensed = Saira_Condensed ({ subsets: ['latin'], weight: '400',})
@@ -16,12 +17,18 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const dataParentCat = await getParentData();
+  const gamePcs = await getGamePCs();
+  const workPcs = await getWorkPCs();
+  const workSta = await getWorkStations();
+  const aksesuar = await getAksesuar();
+  const monitor = await getMonitor();
   return (
     <html lang="en">
 
       <body className={saira_condensed.className}>
         <Header  data = {dataParentCat}/>
-        <StickyTab data = {dataParentCat}/>
+        {/* <StickyTab data = {dataParentCat}/> */}
+        <Categories data = {dataParentCat} gamePcs={gamePcs} workPcs={workPcs} workSta={workSta} aksesuar={aksesuar} monitor= {monitor} />
         <main>
           {children}
         </main>

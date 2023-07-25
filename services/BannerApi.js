@@ -8,7 +8,7 @@ export const getBanners = async () => {
     "categoryId": 0
   };
   try {
-    const response = await axios.post(process.env.API_URL_DOUBLE_BANNER, body, {
+    const response = await axios.post( process.env.API_URL_DOUBLE_BANNER, body, {
       headers: {
         'x-monster-client-channel': 'MobileAppTr',
         'Content-Type': 'application/json',

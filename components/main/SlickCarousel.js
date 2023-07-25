@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
-
-
 import '@/styles/SlickCarousel.css'
 import Link from 'next/link';
+import Image from 'next/image';
 
 const SlickCarousel = ({ data }) => {
   const [bannerData, setBannerData] = useState([]);
@@ -65,7 +64,6 @@ const SlickCarousel = ({ data }) => {
       setBannerLink(imageLinkText);
       setBannerColor(imageColor);
       setBannerMobileImg(mobileImageUrls);
-
     }
   }, [data]);
 
@@ -84,7 +82,37 @@ const SlickCarousel = ({ data }) => {
     autoplay: false,
     autoplaySpeed: 5000,
     customPaging: () => <CustomDots />,
-    
+    responsive: [
+      {
+        breakpoint: 960,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+
+      },
+      {
+        breakpoint: 870,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+
+      },
+      {
+        breakpoint: 575,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+
+      },
+
+
+    ]
+
+
+
   };
 
   return (
@@ -95,12 +123,16 @@ const SlickCarousel = ({ data }) => {
           {bannerData.map((url, index) => (
             <div className='slider-inner pb-5 relative w-full' key={index}>
               <ul className='slider-wrapper relative w-full h-full flex box-content'>
-                <li className='shrink-0 w-full h-full relative'>
+                <li className='slider-li shrink-0 w-full h-full relative'>
                   <div className='inside'>
                     <div className='slider-img-div w-full h-full relative '>
                       <picture >
-                        <img src={url} className='slider-img w-full absolute max-w-none object-cover' />
-                        <source media='(max-width:960px)' srcSet={bannerMobileImg}/>
+                        {/* <source media='(max-width:960px)' srcSet={bannerMobileImg} />
+                        <source media='(min-width:961px)' srcSet={url} /> */}
+                        <Image src={url} className='slider-img w-full absolute max-w-none object-cover'
+                        width={2000}
+                        height={1000} />
+
                       </picture>
                     </div>
                     <div className='slider-content-wrapper absolute'>
