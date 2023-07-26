@@ -29,7 +29,12 @@ const SecondBanner = ({ data }) => {
           <li className='banners-left relative'>
             <div className='left-img-div relative overflow-hidden w-full'>
               <picture>
-                <img src={bannerData[0]} alt="Banner Image" className='w-full h-auto max-w-full' />
+                <img 
+                src={bannerData[0]} 
+                alt="Banner Image"
+                 className='w-full h-auto max-w-full' 
+                 width={100}
+                 height={100}/>
               </picture>
             </div>
             <div className='wrapper-div absolute flex flex-wrap'>
@@ -51,7 +56,11 @@ const SecondBanner = ({ data }) => {
           <li className='banners-right relative'>
             <div className='left-img-div relative overflow-hidden w-full'>
               <picture>
-                <img src={bannerData[1]} alt="Banner Image" className='w-full h-auto max-w-full' />
+                <img src={bannerData[1]} alt="Banner Image" 
+                className='w-full h-auto max-w-full'
+                width={100}
+                 height={100}
+                  />
               </picture>
 
             </div>

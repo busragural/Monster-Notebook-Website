@@ -14,7 +14,10 @@ const FirstBanner = () => {
             <li className='single-banner rightBottom relative'>
               <div className='center-img-div relative w-full'>
                 <picture>
-                  <Image src={Banner} className='first-banner-image w-full h-auto max-w-full ' />
+                  <Image src={Banner} className='first-banner-image w-full h-auto max-w-full '
+                  width={1500}
+                  height={1500}
+                  alt='' />
                 </picture>
               </div>
               <div className='bnr-wrapper absolute flex flex-wrap'>

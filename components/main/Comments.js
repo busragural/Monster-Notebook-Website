@@ -76,7 +76,8 @@ const Comments = () => {
                                                         <Image src={'https://img-monsternotebook.mncdn.com/UPLOAD/upload/abra-kucuk-resimler/abra-a7-v12.5/thumb/Abra-A7-v12_5-Gtx_small.png'}
                                                             width={130}
                                                             height={130}
-                                                            className='dipslay-inline' />
+                                                            className='dipslay-inline' 
+                                                            alt=''/>
                                                     </Link>
                                                 </div>
                                             </div>
@@ -105,7 +106,8 @@ const Comments = () => {
                                                         <Image src={'https://img-monsternotebook.mncdn.com/UPLOAD/upload/abra-kucuk-resimler/abra-a7-v12.5/thumb/Abra-A7-v12_5-Gtx_small.png'}
                                                             width={130}
                                                             height={130}
-                                                            className='dipslay-inline' />
+                                                            className='dipslay-inline'
+                                                            alt='' />
                                                     </Link>
                                                 </div>
                                             </div>
@@ -134,7 +136,8 @@ const Comments = () => {
                                                         <Image src={'https://img-monsternotebook.mncdn.com/UPLOAD/upload/abra-kucuk-resimler/abra-a7-v12.5/thumb/Abra-A7-v12_5-Gtx_small.png'}
                                                             width={130}
                                                             height={130}
-                                                            className='dipslay-inline' />
+                                                            className='dipslay-inline'
+                                                            alt='' />
                                                     </Link>
                                                 </div>
                                             </div>
@@ -163,7 +166,8 @@ const Comments = () => {
                                                         <Image src={'https://img-monsternotebook.mncdn.com/UPLOAD/upload/abra-kucuk-resimler/abra-a7-v12.5/thumb/Abra-A7-v12_5-Gtx_small.png'}
                                                             width={130}
                                                             height={130}
-                                                            className='dipslay-inline' />
+                                                            className='dipslay-inline'
+                                                            alt='' />
                                                     </Link>
                                                 </div>
                                             </div>
@@ -192,7 +196,8 @@ const Comments = () => {
                                                         <Image src={'https://img-monsternotebook.mncdn.com/UPLOAD/upload/abra-kucuk-resimler/abra-a7-v12.5/thumb/Abra-A7-v12_5-Gtx_small.png'}
                                                             width={130}
                                                             height={130}
-                                                            className='dipslay-inline' />
+                                                            className='dipslay-inline'
+                                                            alt='' />
                                                     </Link>
                                                 </div>
                                             </div>
@@ -221,7 +226,8 @@ const Comments = () => {
                                                         <Image src={'https://img-monsternotebook.mncdn.com/UPLOAD/upload/abra-kucuk-resimler/abra-a7-v12.5/thumb/Abra-A7-v12_5-Gtx_small.png'}
                                                             width={130}
                                                             height={130}
-                                                            className='dipslay-inline' />
+                                                            className='dipslay-inline' 
+                                                            alt=''/>
                                                     </Link>
                                                 </div>
                                             </div>
@@ -250,7 +256,8 @@ const Comments = () => {
                                                         <Image src={'https://img-monsternotebook.mncdn.com/UPLOAD/upload/abra-kucuk-resimler/abra-a7-v12.5/thumb/Abra-A7-v12_5-Gtx_small.png'}
                                                             width={130}
                                                             height={130}
-                                                            className='dipslay-inline' />
+                                                            className='dipslay-inline' 
+                                                            alt=''/>
                                                     </Link>
                                                 </div>
                                             </div>

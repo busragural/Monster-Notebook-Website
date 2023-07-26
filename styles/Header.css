@@ -2,12 +2,6 @@ h1 {
     color: white;
 }
 
-@media (max-width: 960px) {
-    .mini-tab {
-        display: none;
-    }
-}
-
 .img-logo {
     height: 65px;
     width: auto;
@@ -23,6 +17,9 @@ h1 {
 
 
 @media (max-width: 960px) {
+    .mini-tab {
+        display: none!important;
+    }
     .img-logo {
         height: 30px;
         width: auto;
@@ -30,7 +27,7 @@ h1 {
     }
 
     .input-wrapper {
-        display: none;
+        display: none!important;
     }
     .hamburger{
         display: block;
@@ -39,163 +36,3 @@ h1 {
     
 }
 
-
- /* .header{
-    position: sticky;
-    top: -128px;
-    z-index: 99;
-    display: block;
-
- }
-
- .header-wrapper{
-    width: 100%;
-    z-index: 20;
-    position: relative;
- }
-
- .header-top{
-    background: #000000;
-    max-width: 100%;
-    width: 100%;
- }
- .yellow-area{
-    position: relative;
- }
-
-.header-tabsite{
-
-}
-
-.header-tabsite-ul{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.header-tabsite-ul li{
-    color: #fff;
-    padding: 10px 10px 6px;
-    line-height: normal;
-}
-
-.header-tabsite-link{
-    display: inline-block;
-}
-
-.header-tabsite-link span{
-    background: none;
-    float: left;
-    font-size: 11px;
-    color: #fbbd08;
-    line-height: normal;
-    transition: all 0.35s ease-in-out;
-
-}
-.header-middle{
-    background: #000000;
-}
-
-.middle-main{
-    max-width: none;
-    align-items: flex-end!important;
-    justify-content: space-between!important;
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-}
-.desktop-element{
-    position: relative;
-    flex: 1 0;
-}
-
-.monster-logo{
-    height: 65px;
-    margin-top: -6px;
-    max-width: 100%;
-}
-
-.middle-search{
-    position: relative;
-    padding: 0 10px !important;
-    flex: 1 0;
-}
-
-.middle-bar{
-    position: relative;
-}
-
-.search-icon-div{
-    padding: 9px;
-    display: inline-block;
-    height: 40px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    pointer-events: none;
-}
-
-.middle-bar-search input{
-    border: 1px solid #49494a;
-    height: 40px;
-    line-height: 40px;
-    background-color: #161617 !important;
-    font: inherit;
-    margin: 0;
-    overflow: visible;
-}
-
-input[type-text]{
-    font-size: 16px;
-    background: #161617;
-    color: #a4a4a5;
-    outline: none;
-    padding: 9px 13px;
-    width: 100%;
-    box-shadow: none;
-    line-height: 1;
-    width: 24px !important;
-    height: 24px !important;
-
-}
-
-.search-icon{
-    display: inline-block;
-    stroke-width: 0;
-    stroke: currentColor;
-    fill: currentColor;
-    flex: none !important;
-    vertical-align: middle;
-    font-size: 32px;
-    background-repeat: no-repeat;
-    overflow: hidden;
-}
-
-.header-bottom{
-    float: right;
-    flex-wrap: wrap!important;
-    position: relative;
-    text-align: right;
-    display: flex;
-    flex: 1 0;
-
-}
-
-.bottom-main{
-    float: right;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-.h-banner > div{
-    display: inline-block;
-    vertical-align: top;
-}
-.ext-pay{
-    position: relative;
-    display: inline-block;
-
-}
-
-.ext-pay-inner{
-
-} */

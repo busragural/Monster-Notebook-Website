@@ -1,0 +1,76 @@
+.nav-main2 {
+    height: calc(100% - 50px) !important;
+
+    overflow-y: auto !important;
+    z-index: 10;
+    position: fixed;
+}
+
+.mobile-element2 {
+    z-index: 7;
+    padding: 0px 60px 0px 40px;
+    border-bottom: 1px solid #323334;
+    height: 103px;
+}
+
+.mb-logo {
+    max-width: 160px;
+}
+
+.ext-pay-header {
+    line-height: normal;
+    font-size: 12px;
+    height: inherit;
+    border: 1px solid #49494a;
+}
+
+.ext-pay-header>span {
+    position: static;
+    margin: 0;
+    white-space: nowrap;
+}
+
+
+.catdata-name2 {
+    
+    letter-spacing: normal;
+    font-size: 12px !important;
+    color: #fff !important;
+    padding: 15px 40px;
+    display: block;
+    
+}
+
+.mobile-contact {
+    border-top: 1px solid #323334;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+
+.mobile-footer {
+    z-index: 3;
+}
+
+.mainpage {
+    display: block;
+    border-right: 1px solid #323334;
+    width: 100%;
+    border: 0;
+    background: #131414;
+    border-top: 1px solid #323334;
+    border-right: 1px solid #323334;
+}
+
+.f-link {
+    color: #fff;
+    font-size: 12px !important;
+    text-align: center;
+    padding: 16px 10px;
+    border: 0;
+    letter-spacing: 1px;
+    position: relative;
+    display: block;
+
+}
+

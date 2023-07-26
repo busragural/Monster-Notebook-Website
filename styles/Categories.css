@@ -1,46 +1,50 @@
-.bottom-tab{
+.bottom-tab {
     background-color: #000;
     z-index: 99;
     position: relative;
     max-width: 100%;
     width: 100%;
+   
 }
 
-.bottom-in{
+.bottom-in {
     padding: 0px;
     max-width: none;
     text-align: center;
     width: 100%;
     margin: 0 auto;
+    text-transform: uppercase !important;
+    letter-spacing: 0.4px;
 }
 
-.bottom-col{
+.bottom-col {
     display: inline-block;
     vertical-align: middle;
     position: static;
 
 }
 
-.nav-main{
+.nav-main {
     text-align: center;
     overflow: hidden;
     display: inline-block;
 }
 
-.nav-main > ul {
+.nav-main>ul {
     width: 100%;
     display: flex;
     column-gap: 60px;
     align-items: center;
 }
 
-.nav-main > ul > li{
+
+.nav-main>ul>li {
     display: inline-block;
     vertical-align: middle;
 }
 
-.catdata-name{
-    font-size: 13px;
+.catdata-name {
+    font-size: 14px;
     display: block;
     text-align: center;
     padding: 15px 0px;
@@ -50,20 +54,28 @@
     transition: color 0.35s ease-in-out;
 }
 
-.sub-nav{
-    max-height: 430px;
+.sub-nav {
+    max-height: 0px;
     overflow: hidden;
     position: absolute;
     top: 49px;
     left: 0;
     width: 100%;
-    z-index: 9;
     background: #131414;
     width: 100%;
     box-shadow: inset 2px 3px 2px -1px rgba(0, 0, 0, 0.08);
+    display: none;
+    z-index: 9999;
+   
 }
 
-.sub-nav-wrapper{
+.sub-menu:hover .sub-nav {
+    
+    display: block;
+    max-height: 430px;
+}
+
+.sub-nav-wrapper {
     width: 100%;
     max-width: 1240px;
     margin: 0 auto 0 auto;
@@ -71,7 +83,7 @@
     position: relative;
 }
 
-.sub-nav-links{
+.sub-nav-links {
     width: 100%;
     display: flex;
     max-width: 1240px;
@@ -80,7 +92,7 @@
     padding: 0px;
 }
 
-.sub-nav-lvl2{
+.sub-nav-lvl2 {
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -93,7 +105,7 @@
 
 
 
-.sub-nav-list{
+.sub-nav-list {
     z-index: 11;
     position: relative;
     width: 100%;
@@ -103,7 +115,7 @@
     overflow: hidden;
 }
 
-.sub-wrapper-ul{
+.sub-wrapper-ul {
     align-items: center;
     justify-content: center;
     transform: translate3d(0px, 0px, 0px);
@@ -113,9 +125,10 @@
     height: 100%;
     z-index: 1;
     position: relative;
+
 }
 
-.sub-wrapper-li{
+.sub-wrapper-li {
     max-width: 130px !important;
     text-align: center;
     margin-bottom: 0px;
@@ -130,7 +143,7 @@
 }
 
 
-.sub-wrapper-link{
+.sub-wrapper-link {
     position: relative;
     padding: 0;
     color: #000;
@@ -139,19 +152,19 @@
     letter-spacing: 0.4px;
 }
 
-.sub-image{
+.sub-image {
     position: relative;
     z-index: 1;
     margin: 0 auto 10px auto;
     width: 78px;
     height: 78px;
     display: block;
-        max-width: 100%;
-        object-fit: contain;
-        max-width: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    max-width: 100%;
 }
 
-.sub-wrapper-link > span{
+.sub-wrapper-link>span {
     display: inline;
     font-size: 12px;
     margin-top: 5px;
@@ -159,17 +172,9 @@
     position: relative;
 }
 
-
-.sub-nav{
-    display: none;
-    position: ab;
-   z-index: 9999;
-    
-    
-}
-    .sub-menu:hover .sub-nav {
-        display: block;
-        display: flex;
-
+@media (max-width: 960px) {
+    .bottom-tab{
+        display: none;
     }
     
+}

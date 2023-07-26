@@ -127,11 +127,22 @@ const SlickCarousel = ({ data }) => {
                   <div className='inside'>
                     <div className='slider-img-div w-full h-full relative '>
                       <picture >
-                        {/* <source media='(max-width:960px)' srcSet={bannerMobileImg} />
-                        <source media='(min-width:961px)' srcSet={url} /> */}
-                        <Image src={url} className='slider-img w-full absolute max-w-none object-cover'
+                        
+                        {/* <Image 
+                        sizes='(max-width: 960px)'
+                        src={bannerMobileImg[index]}
+                        className='slider-img w-full absolute max-w-none object-cover'
+                        width={100}
+                        height={100}
+                        /> */}
+                        <Image 
+                        sizes='(min-width: 961px)'
+                        src={url} className='slider-img w-full absolute max-w-none object-cover'
                         width={2000}
-                        height={1000} />
+                        height={1000} 
+                        alt=''
+                        loading='lazy'
+                        />
 
                       </picture>
                     </div>

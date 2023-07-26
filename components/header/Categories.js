@@ -1,21 +1,15 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import '@/styles/Categories.css'
 import Link from 'next/link'
 import Image from 'next/image'
-import logoPic from '@/assets/logo.png'
+import catName from '@/helpers/CategoryName'
+
 
 
 const Categories = ({ data, gamePcs, workPcs, workSta, aksesuar, monitor }) => {
 
-    const catName = ['Tüm Laptoplar',
-        'Oyun Bilgisayarları',
-        'Aksesuarlar',
-        'Oyuncu Monitörü',
-        'İş Bilgisayarları',
-        'İş İstasyonları',
-        'CPU & GPU'
-    ]
+    const tmpData = useMemo(() => data.map((item) => item), [data]);
 
     const [catData, setCatData] = useState([]);
     const [gamePc, setGamePc] = useState([]);
@@ -37,12 +31,27 @@ const Categories = ({ data, gamePcs, workPcs, workSta, aksesuar, monitor }) => {
         console.log("aksesuarlar:", aksesuarlar);
         setMonitors(monitor);
         console.log("monitors:", monitors);
-    }, [data]);
+    }, [tmpData, gamePcs, workPcs, workSta, aksesuar, monitor]);
 
-
-
-
-
+    const getImages = (categories) => {
+        return (
+            <div className='flex justify-center'>
+                {categories?.map((j) => (
+                    <li className='sub-wrapper-li'>
+                        <Link href={'/'} className='sub-wrapper-link'>
+                            <Image
+                                src={j.imageUrl}
+                                width={100}
+                                height={100}
+                                alt=''
+                            />
+                            <span>{j.name}</span>
+                        </Link>
+                    </li>
+                ))}
+            </div>
+        );
+    };
 
 
     return (
@@ -66,7 +75,20 @@ const Categories = ({ data, gamePcs, workPcs, workSta, aksesuar, monitor }) => {
                                                         <div className='sub-nav-list'>
                                                             <ul className='sub-wrapper-ul'>
 
-                                                                {item === 'Tüm Laptoplar' && catData.some((k) => k.name === 'Tüm Laptoplar') ? (
+                                                            {item === 'Tüm Laptoplar' && data.some((k) => k.name === 'Tüm Laptoplar') ? (
+                                                                    getImages(data[0]?.childCategories?.map((i) => i.childCategories).flat())
+                                                                ) : null}
+
+                                                                {item === 'Aksesuarlar' && data.some((k) => k.name === 'Aksesuarlar') ? (
+                                                                    getImages(data[1]?.childCategories?.map((i) => i.childCategories).flat())
+                                                                ) : null}
+
+                                                                {item === 'Oyun Bilgisayarları' ? getImages(gamePcs[0]?.childCategories) : null}
+                                                                {item === 'Oyuncu Monitörü' ? getImages(monitor[0]?.childCategories) : null}
+                                                                {item === 'İş Bilgisayarları' ? getImages(workPcs[0]?.childCategories) : null}
+                                                                {item === 'İş İstasyonları' ? getImages(workStat[0]?.childCategories) : null} 
+
+                                                                {/* {item === 'Tüm Laptoplar' && catData.some((k) => k.name === 'Tüm Laptoplar') ? (
                                                                     <div className='flex justify-center'>
                                                                         {catData[0].childCategories.map((i) =>
                                                                             i.childCategories.map((j) => (<li className='sub-wrapper-li'>
@@ -75,6 +97,7 @@ const Categories = ({ data, gamePcs, workPcs, workSta, aksesuar, monitor }) => {
                                                                                         src={j.imageUrl}
                                                                                         width={100}
                                                                                         height={100}
+                                                                                        alt=''
                                                                                     />
                                                                                     <span>{j.name}</span>
                                                                                 </Link>
@@ -93,6 +116,7 @@ const Categories = ({ data, gamePcs, workPcs, workSta, aksesuar, monitor }) => {
                                                                                             src={j.imageUrl}
                                                                                             width={100}
                                                                                             height={100}
+                                                                                            alt=''
                                                                                         />
                                                                                         <span>{j.name}</span>
                                                                                     </Link>
@@ -100,14 +124,148 @@ const Categories = ({ data, gamePcs, workPcs, workSta, aksesuar, monitor }) => {
                                                                         ).flat()}
                                                                     </div>
                                                                 ) : null}
-                                                                
 
 
+                                                                                                                            
+                                                                {item === 'Oyun Bilgisayarları' ? (
+                                                                    <div className='flex justify-center'>
+                                                                        {gamePc[0]?.childCategories?.map((j) => (
+                                                                            <li className='sub-wrapper-li'>
+                                                                                <Link href={'/'} className='sub-wrapper-link'>
+                                                                                    <Image
+                                                                                        src={j.imageUrl}
+                                                                                        width={100}
+                                                                                        height={100}
+                                                                                        alt=''
+                                                                                    />
+                                                                                    <span>{j.name}</span>
+                                                                                </Link>
+                                                                            </li>
+                                                                        ))}
+                                                                    </div>
+                                                                ) : null}
+                                                                {item === 'Oyuncu Monitörü' ? (
+                                                                    <div className='flex justify-center'>
+                                                                        {monitor[0]?.childCategories?.map((j) => (
+                                                                            <li className='sub-wrapper-li'>
+                                                                                <Link href={'/'} className='sub-wrapper-link'>
+                                                                                    <Image
+                                                                                        src={j.imageUrl}
+                                                                                        width={100}
+                                                                                        height={100}
+                                                                                        alt=''
+                                                                                    />
+                                                                                    <span>{j.name}</span>
+                                                                                </Link>
+                                                                            </li>
+                                                                        ))}
+                                                                    </div>
+                                                                ) : null}
+                                                                {item === 'İş Bilgisayarları' ? (
+                                                                    <div className='flex justify-center'>
+                                                                        {workPc[0]?.childCategories?.map((j) => (
+                                                                            <li className='sub-wrapper-li'>
+                                                                                <Link href={'/'} className='sub-wrapper-link'>
+                                                                                    <Image
+                                                                                        src={j.imageUrl}
+                                                                                        width={100}
+                                                                                        height={100}
+                                                                                        alt=''
+                                                                                    />
+                                                                                    <span>{j.name}</span>
+                                                                                </Link>
+                                                                            </li>
+                                                                        ))}
+                                                                    </div>
+                                                                ) : null}
 
+                                                                {item === 'İş İstasyonları' ? (
+                                                                    <div className='flex justify-center'>
+                                                                        {workStat[0]?.childCategories?.map((j) => (
+                                                                            <li className='sub-wrapper-li'>
+                                                                                <Link href={'/'} className='sub-wrapper-link'>
+                                                                                    <Image
+                                                                                        src={j.imageUrl}
+                                                                                        width={100}
+                                                                                        height={100}
+                                                                                        alt=''
+                                                                                    />
+                                                                                    <span>{j.name}</span>
+                                                                                </Link>
+                                                                            </li>
+                                                                        ))}
+                                                                    </div>
+                                                                ) : null} */}
 
+                                                                {/* {item === 'Oyun Bilgisayarları' ? (
+                                                                    <div className='flex justify-center'>
+                                                                        {catData[0]?.childCategories[0]?.childCategories.map((j) => (
+                                                                            <li className='sub-wrapper-li'>
+                                                                                <Link href={'/'} className='sub-wrapper-link'>
+                                                                                    <Image
+                                                                                        src={j.imageUrl}
+                                                                                        width={100}
+                                                                                        height={100}
+                                                                                        alt=''
+                                                                                    />
+                                                                                    <span>{j.name}</span>
+                                                                                </Link>
+                                                                            </li>
+                                                                        ))}
+                                                                    </div>
+                                                                ) : null}
+                                                                {item === 'Oyuncu Monitörü' ? (
+                                                                    <div className='flex justify-center'>
+                                                                        {catData[1]?.childCategories[0]?.childCategories[3]?.childCategories.map((j) => (
+                                                                            <li className='sub-wrapper-li'>
+                                                                                <Link href={'/'} className='sub-wrapper-link'>
+                                                                                    <Image
+                                                                                        src={j.imageUrl}
+                                                                                        width={100}
+                                                                                        height={100}
+                                                                                        alt=''
+                                                                                    />
+                                                                                    <span>{j.name}</span>
+                                                                                </Link>
+                                                                            </li>
+                                                                        ))}
+                                                                    </div>
+                                                                ) : null}
+                                                                {item === 'İş Bilgisayarları' ? (
+                                                                    <div className='flex justify-center'>
+                                                                        {catData[0]?.childCategories[2]?.childCategories.map((j) => (
+                                                                            <li className='sub-wrapper-li'>
+                                                                                <Link href={'/'} className='sub-wrapper-link'>
+                                                                                    <Image
+                                                                                        src={j.imageUrl}
+                                                                                        width={100}
+                                                                                        height={100}
+                                                                                        alt=''
+                                                                                    />
+                                                                                    <span>{j.name}</span>
+                                                                                </Link>
+                                                                            </li>
+                                                                        ))}
+                                                                    </div>
+                                                                ) : null}
 
-
-
+                                                                {item === 'İş İstasyonları' ? (
+                                                                    <div className='flex justify-center'>
+                                                                        {catData[0]?.childCategories[1]?.childCategories.map((j) => (
+                                                                            <li className='sub-wrapper-li'>
+                                                                                <Link href={'/'} className='sub-wrapper-link'>
+                                                                                    <Image
+                                                                                        src={j.imageUrl}
+                                                                                        width={100}
+                                                                                        height={100}
+                                                                                        alt=''
+                                                                                    />
+                                                                                    <span>{j.name}</span>
+                                                                                </Link>
+                                                                            </li>
+                                                                        ))}
+                                                                    </div>
+                                                                ) : null} */}
 
 
                                                             </ul>
@@ -134,4 +292,5 @@ const Categories = ({ data, gamePcs, workPcs, workSta, aksesuar, monitor }) => {
     )
 }
 
-export default Categories
+export default Categories;
+

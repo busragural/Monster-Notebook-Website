@@ -7,15 +7,19 @@ import SlickCarousel from "@/components/main/SlickCarousel";
 import Comments from "@/components/main/Comments";
 import { getBanners } from '../services/BannerApi'
 import { getBannerData } from "@/services/SliderPhotos";
+import MobileMenu from "@/components/header/MobileMenu";
+import dynamic from "next/dynamic";
 
 
 export default async function Home() {
   const dataDoubleBanners = await getBanners()
   const dataSlider = await getBannerData();
+  const DynamicComponent = dynamic(() => import("@/components/main/SlickCarousel"));
 
   return (
     <div>
-      <SlickCarousel data={dataSlider} />
+      {/* <MobileMenu/> */}
+      <DynamicComponent data={dataSlider} />
       <FirstBanner />
       <SecondBanner data={dataDoubleBanners} />
       <Video />

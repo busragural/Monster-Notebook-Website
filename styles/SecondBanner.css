@@ -82,6 +82,13 @@
         height: 52px;
         margin-bottom: 0;
     }
+    .left-img-div img {
+        transition: none;
+    }
+
+    .left-img-div:hover img {
+        transform: none;
+    }
 
 
 }
