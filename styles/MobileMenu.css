@@ -33,13 +33,47 @@
 
 .catdata-name2 {
     
-    letter-spacing: normal;
-    font-size: 12px !important;
+    letter-spacing: 0.4px;
+    font-size: 13.5px !important;
     color: #fff !important;
     padding: 15px 40px;
     display: block;
+
+
     
 }
+
+.catdata-name2.open{
+    background: #161617;
+    height: auto;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+    background-image: -o-linear-gradient(349deg, #161617, #323334);
+    background-image: linear-gradient(101deg, #161617, #323334);
+}
+
+.mobile-sub-icon{
+    color: #00ff00;
+    position: absolute;
+    top: 50%;
+    left: inherit;
+    right: 20px;
+    bottom: inherit;
+    margin: -10px 0 0 0;
+    width: 15px;
+    height: 15px;
+    opacity: 1;
+    visibility: visible;
+    display: inline-block !important;
+}
+
+.mobile-sub-icon.open {
+    transform: rotate(90deg);
+  }
+
+
 
 .mobile-contact {
     border-top: 1px solid #323334;
@@ -47,6 +81,18 @@
     padding-top: 20px;
     padding-bottom: 60px;
 }
+
+
+.catdata-name3{
+    width: 100%;
+    float: left;
+    text-align: left;
+    letter-spacing: normal;
+    font-size: 13.5px !important;
+    color: #a4a4a5 !important;
+    padding: 15px 30px 15px 40px;
+}
+
 
 .mobile-footer {
     z-index: 3;
@@ -74,3 +120,46 @@
 
 }
 
+.mobile-sub-nav{
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    background: #161617;
+    max-height: none !important;
+    position: static;
+    overflow: hidden;
+    display:hidden;
+}
+
+.mobile-nav-wrapper{
+    display: block; 
+}
+
+.mobile-nav-links{
+    display: block;
+    height: auto !important;
+    padding: 0;
+}
+
+.mobile-wrapper{
+    flex-wrap: wrap;
+    width: 100%;
+    overflow-y:auto ;
+
+}
+
+.sub-menu2{
+    position: relative;
+    border-bottom: 1px solid #161617;
+    
+}
+
+
+.mobile-sub-nav {
+    display: none;
+  }
+  
+  /* "open" sınıfı uygulandığında öğeyi görünür yapın */
+  .mobile-sub-nav.open {
+    display: block;
+  }

@@ -12,7 +12,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import headerTab from '@/helpers/HeaderTab'
 import MobileMenu from './MobileMenu'
 import Categories from './Categories'
-const Header = ({ data }) => {
+const Header = ({  data, gamePcs, workPcs, workSta, monitor }) => {
 
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -93,7 +93,7 @@ const Header = ({ data }) => {
 
 
 
-      {isMobileMenuOpen && <MobileMenu onCloseMenu={handleMobileMenuClose} />}
+      {isMobileMenuOpen && <MobileMenu onCloseMenu={handleMobileMenuClose} data = {data} gamePcs={gamePcs} workPcs={workPcs} workSta={workSta} monitor= {monitor} />}
       
     </div>
 

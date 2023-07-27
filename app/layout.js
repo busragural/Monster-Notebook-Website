@@ -19,14 +19,14 @@ export default async function RootLayout({ children }) {
   const gamePcs = await getGamePCs();
   const workPcs = await getWorkPCs();
   const workSta = await getWorkStations();
-  const aksesuar = await getAksesuar();
   const monitor = await getMonitor();
   return (
     <html lang="en">
 
       <body className={saira_condensed.className}>
-        <Header  data = {dataParentCat}/>
-        <Categories data = {dataParentCat} gamePcs={gamePcs} workPcs={workPcs} workSta={workSta} aksesuar={aksesuar} monitor= {monitor} />
+        
+        <Header  data = {dataParentCat} gamePcs={gamePcs} workPcs={workPcs} workSta={workSta} monitor= {monitor}/>
+        <Categories data = {dataParentCat} gamePcs={gamePcs} workPcs={workPcs} workSta={workSta} monitor= {monitor} />
         <main>
           {children}
         </main>
