@@ -1,11 +1,11 @@
 import axios from "axios";
 
-export const getBanners = async () => {
+export const getAbraBanner = async () => {
 
   const body = {
-    "bannerCode": 7612,
+    "bannerCode": 0,
     "productId": 0,
-    "categoryId": 0
+    "categoryId": 6823
   };
   try {
     const response = await axios.post(process.env.API_URL_DOUBLE_BANNER, body, {
@@ -17,7 +17,7 @@ export const getBanners = async () => {
       }
     })
     const bannerData = response.data.data;
-    // console.log("data", bannerData);
+    //console.log("data", bannerData);
     // console.log("json", bannerData.length);
     return bannerData;
 
@@ -29,4 +29,3 @@ export const getBanners = async () => {
 
 
 }
-

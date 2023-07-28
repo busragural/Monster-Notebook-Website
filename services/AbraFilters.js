@@ -1,23 +1,22 @@
 import axios from "axios";
 
-export const getBanners = async () => {
+export const getAbraFilter= async () => {
 
   const body = {
-    "bannerCode": 7612,
-    "productId": 0,
-    "categoryId": 0
+    "catId": 6823
+    
   };
   try {
-    const response = await axios.post(process.env.API_URL_DOUBLE_BANNER, body, {
+    const response = await axios.post(process.env.API_URL_FILTERS, body, {
       headers: {
         'x-monster-client-channel': 'MobileAppTr',
         'Content-Type': 'application/json',
         'Cache-Control': 'no-cache',
-        'Ocp-Apim-Subscription-Key': process.env.API_KEY_DOUBLE_BANNER,
+        'Ocp-Apim-Subscription-Key':process.env.API_KEY_FILTERS,
       }
     })
     const bannerData = response.data.data;
-    // console.log("data", bannerData);
+    console.log("data", bannerData);
     // console.log("json", bannerData.length);
     return bannerData;
 
@@ -29,4 +28,3 @@ export const getBanners = async () => {
 
 
 }
-

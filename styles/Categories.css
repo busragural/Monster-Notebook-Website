@@ -234,5 +234,5 @@
     width: 30%; 
     height: 1px;
     background-color: #00FF00;
-    animation: loadingBar 1s linear;
+    animation: loadingBar 0.4s linear;
   }

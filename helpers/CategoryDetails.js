@@ -7,7 +7,7 @@ export const getImages = (categories) => {
         <div className='flex justify-center'>
             {categories?.map((j) => (
                 <li className='sub-wrapper-li'>
-                    <Link href={'/'} className='sub-wrapper-link'>
+                    <Link href={`/${j.name}`} className='sub-wrapper-link'>
                         <Image
                             src={j.imageUrl}
                             width={100}
