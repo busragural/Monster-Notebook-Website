@@ -33,6 +33,9 @@ export const Banner = ({ abraBanner }) => {
             setBannerContent(content);
 
         }
+
+        
+
     }, [abraBanner]);
 
 
@@ -111,15 +114,34 @@ export const Banner = ({ abraBanner }) => {
                                 <ul className='dropdown-list w-full'>
                                     <li>
                                         <Link href={'/'} className='dropdown-list-element'>
-                                            <span>ucuzdan pahalı</span>
+                                            <span>fiyat: düşükten yükseğe</span>
                                         </Link>
                                     </li>
                                     <li>
                                         <Link href={'/'} className='dropdown-list-element'>
-                                            <span>ucuzdan pahalı</span>
+                                            <span>fiyat: yüksekten düşüğe</span>
                                         </Link>
                                     </li>
-
+                                    <li>
+                                        <Link href={'/'} className='dropdown-list-element'>
+                                            <span>değerlendirme puanı</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href={'/'} className='dropdown-list-element'>
+                                            <span>eskiden yeniye</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href={'/'} className='dropdown-list-element'>
+                                            <span>yeniden eskiye</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href={'/'} className='dropdown-list-element'>
+                                            <span>en çok satanlar</span>
+                                        </Link>
+                                    </li>
                                 </ul>
                             )}
                         </div>

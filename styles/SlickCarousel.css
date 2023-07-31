@@ -10,7 +10,7 @@
 
 .slider-img-div {
 
-  min-height: 410px;
+  height: 410px;
   background-size: cover;
   background-color: #161617;
   background-position: center center;
@@ -48,6 +48,7 @@
   padding: 15px 30px;
   top: 50%;
   width: auto;
+  flex: none!important;
 }
 
 .slider-title-span {
@@ -126,6 +127,8 @@
     height: auto;
     position: relative;
     flex-shrink: 0;
+     width: 600px!important;
+    height: 600px!important;
   }
   .inside{
     border: 1px solid #323334;
@@ -134,12 +137,14 @@
     display: flex;
     flex-flow: column nowrap;
     
+    
   }
   .slider-img-div{
   
     background: none !important;
-    height: auto !important;
+    
     width: 100%;
+   
 }
   .slider-content-wrapper{
     position: relative;
@@ -179,8 +184,10 @@
     height: auto;
     color: #fbbd08;
   }
+  
 
 
 
 
 }
+

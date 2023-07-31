@@ -132,8 +132,8 @@ const SlickCarousel = ({ data }) => {
                         sizes='(max-width: 960px)'
                         src={bannerMobileImg[index]}
                         className='slider-img w-full absolute max-w-none object-cover'
-                        width={100}
-                        height={100}
+                        width={600}
+                        height={600}
                         /> */}
                         <Image 
                         sizes='(min-width: 961px)'
