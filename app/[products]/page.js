@@ -11,7 +11,10 @@ export const metadata = {
   }
 
 export default async function Home({params}) {
-    const abraBanner = await getAbraBanner();
+
+    <h1>{params}</h1>
+
+    const abraBanner = await getAbraBanner({ params });
     const abraFilters = await getAbraFilter({ params });
     const abraProducts = await getAbraProducts({params});
     
@@ -21,7 +24,7 @@ export default async function Home({params}) {
                 <div className='page-container max-w-full w-full'>
                     <Banner abraBanner={abraBanner} />
                     <Products abraFilters = {abraFilters} abraProducts={abraProducts}/>
-                 
+
                 </div>
             </div>
         </div>

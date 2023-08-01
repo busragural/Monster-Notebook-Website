@@ -69,9 +69,8 @@ export const Banner = ({ abraBanner }) => {
         setShowMore(prevShowMore => !prevShowMore);
     };
 
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Set the initial state to false
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
 
-    // Step 2: Event handler to toggle the visibility of the dropdown list
     const toggleDropdown = () => {
         setIsDropdownOpen(prevIsDropdownOpen => !prevIsDropdownOpen);
     };

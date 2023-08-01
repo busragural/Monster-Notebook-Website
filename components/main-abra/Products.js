@@ -3,20 +3,20 @@ import React, { useEffect, useState } from 'react'
 import '@/styles/AbraProducts.css'
 import Link from 'next/link'
 import { IoIosArrowForward } from 'react-icons/io'
-import Image from 'next/image'
-import { getID } from '@/helpers/ProductID'
+import { useRouter } from 'next/navigation'
 
 
 const Products = ({ abraFilters, abraProducts }) => {
 
+    const router = useRouter();
     const [smallImg, setsmallImg] = useState([]);
     const [name, setName] = useState([]);
     const [price, setPrice] = useState([]);
     const [attribute, setAttribute] = useState([])
     const [filter, setFilter] = useState([])
-    
+
     useEffect(() => {
-        
+
         //console.log("abra all", abraProducts)
         const imgs = abraProducts.map((item) => item.image.SmallImageUrl);
         setsmallImg(imgs);
@@ -30,8 +30,7 @@ const Products = ({ abraFilters, abraProducts }) => {
         const attributes = abraProducts.map((item) => item.productAttributes)
         setAttribute(attributes);
 
-        
- 
+
     }, [abraProducts])
 
 
@@ -45,13 +44,56 @@ const Products = ({ abraFilters, abraProducts }) => {
         );
     };
 
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(prevIsDropdownOpen => !prevIsDropdownOpen);
+    };
+
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+    const toggleFilter = () => {
+        setIsFilterOpen(prevIsDropdownOpen => !prevIsDropdownOpen);
+    };
+
+
+    //////////////////
+    const [selectedFilters, setSelectedFilters] = useState([]);
+
+    const areFiltersFromSameGroup = (filters) => {
+        if (filters.length === 0) return true;
+        const filterGroups = filters.map((filter) => {
+            return abraFilters.find((group) =>
+                group.filters.some((f) => f.filterName === filter)
+            );
+        });
+        return new Set(filterGroups).size === 1;
+    };
+    const handleFilterChange = (filterName) => {
+
+        if (selectedFilters.includes(filterName)) {
+            setSelectedFilters((prevFilters) => prevFilters.filter((filter) => filter !== filterName));
+        } else {
+            setSelectedFilters((prevFilters) => [...prevFilters, filterName]);
+        }
+    };
+    const filteredProducts = abraProducts.filter((product) => {
+        const lowerCaseFilters = selectedFilters.map(filter => filter.toLowerCase());
+        for (const filter of lowerCaseFilters) {
+            const wordsToSearch = filter.split(/\s+/);
+            if (!wordsToSearch.every(word => product.productAttributes.some(attr => attr.value.toLowerCase().includes(word)))) {
+                return false;
+            }
+        }
+        return true;
+    });
 
 
     return (
-        <div className='product-main'>
+        <div className='product-main w-full flex '>
 
             {/*burasi sol filtre kismi */}
-            <div className='pro-left'>
+            <div className='pro-left relative '>
                 <div className='left-inner'>
                     <div className='left-cell1'>
                         <div className='filter-box box-cat'>
@@ -109,8 +151,20 @@ const Products = ({ abraFilters, abraProducts }) => {
                                                 {item.filters.map((j, index) => (
                                                     <li key={index}>
                                                         <div className=' py-2.5 px-0 block w-auto'>
-                                                            <input type="checkbox" id="stockCheckbox" className='stock-checkbox  text-white text-base  px-0  w-auto' />
-                                                            <label htmlFor="stockCheckbox" className='px-2 text-lg text-[#a4a4a5] '>{j.filterName} ({j.count})</label>
+                                                            <input
+                                                                type='checkbox'
+                                                                id={`filterCheckbox_${key}_${index}`}
+                                                                className='stock-checkbox text-white text-base px-0 w-auto'
+                                                                checked={selectedFilters.includes(j.filterName)}
+                                                                onChange={() => handleFilterChange(j.filterName)}
+                                                            />
+                                                            <label
+                                                                htmlFor={`filterCheckbox_${key}_${index}`}
+                                                                className='px-2 text-lg text-[#a4a4a5]'
+                                                            >
+                                                                {j.filterName} ({j.count})
+                                                            </label>
+
 
                                                         </div>
                                                     </li>
@@ -128,11 +182,106 @@ const Products = ({ abraFilters, abraProducts }) => {
 
 
             {/*burasi sağ urun kismi */}
-            <div className='pro-right'>
+            <div className='pro-right relative'>
                 <div className='right-inner'>
+                    <div className='mobile-tab'>
+                        <div className='mobile-buttons'>
+                            <div className={`filter-btn ${isFilterOpen ? 'open' : ''}`} onClick={toggleFilter}>
+                                <span className='btn-title'>FİLTRELE</span>
+                            </div>
+                            <div className={`sort-btn ${isDropdownOpen ? 'open' : ''}`} onClick={toggleDropdown}>
+                                <span className='btn-title'>SIRALA</span>
+                            </div>
+                        </div>
+                        {isDropdownOpen && (
+                            <ul className='dropdown-list w-full'>
+                                <li>
+                                    <Link href={'/'} className='dropdown-list-element'>
+                                        <span>fiyat: düşükten yükseğe</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href={'/'} className='dropdown-list-element'>
+                                        <span>fiyat: yüksekten düşüğe</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href={'/'} className='dropdown-list-element'>
+                                        <span>değerlendirme puanı</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href={'/'} className='dropdown-list-element'>
+                                        <span>eskiden yeniye</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href={'/'} className='dropdown-list-element'>
+                                        <span>yeniden eskiye</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href={'/'} className='dropdown-list-element'>
+                                        <span>en çok satanlar</span>
+                                    </Link>
+                                </li>
+                            </ul>
+                        )}
+                        {isFilterOpen &&
+                            <div className='left-filters'>
+                                <div className='left-filters-inner'>
+                                    <div className='filter-cell'>
+                                        {abraFilters.map((item, key) => (
+                                            <>
+                                                <div className='filter-box box-cat' key={key}>
+                                                    <div className='box-header text-white'>
+                                                        <span onClick={() => toggleBoxBody(key)}>
+                                                            <div className='box-header-link'>
+                                                                <span>
+                                                                    {item.name}
+                                                                    <IoIosArrowForward className={`box-arrow ${isBoxBodyOpen[key] ? 'open' : 'close'}`} />
+                                                                </span>
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                    {isBoxBodyOpen[key] && (
+                                                        <div className='box-body'>
+                                                            <ul className='box-body-content'>
+                                                                {item.filters.map((j, index) => (
+                                                                    <li key={index}>
+                                                                        <div className=' py-2.5 px-0 block w-auto'>
+                                                                            <input type="checkbox" id="stockCheckbox" className='stock-checkbox  text-white text-base  px-0  w-auto' />
+                                                                            <label htmlFor="stockCheckbox" className='px-2 text-lg text-[#a4a4a5] '>{j.filterName} ({j.count})</label>
+                                                                        </div>
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className='bottom-btns'>
+                                    <div className='btns-inner'>
+                                        <div className='btns-close' onClick={toggleFilter}>
+                                            <span className='bottom-span'>KAPAT</span>
+                                        </div>
+                                        <div className='btns-uygula'>
+                                            <span className='bottom-span'>UYGULA</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        }
+                    </div>
                     <ul className='pro-content'>
-                        {abraProducts.map((i, index) => (
-                            <li className='' key={index}>
+                        {filteredProducts.map((i, index) => (
+                            
+                            <li className='' key={index}> 
                                 <div className='pro-inner'>
                                     <Link href={'/Abra'} className='pro-link'>
                                     </Link>
@@ -144,7 +293,7 @@ const Products = ({ abraFilters, abraProducts }) => {
                                             height={100}
                                         /> */}
                                             <img
-                                                src={smallImg[index]} />
+                                                src={i.image.SmallImageUrl} />
 
                                         </div>
                                     </div>
@@ -152,11 +301,11 @@ const Products = ({ abraFilters, abraProducts }) => {
                                         <div className='middle-content'>
                                             <div className='pro-cont'>
                                                 <h3 className='pro-name'>
-                                                    {name[index]}
+                                                    {i.name}
                                                 </h3>
                                                 <div className='pro-ozel'>
                                                     <ul>
-                                                        {attribute[index]?.map((k, t) => (
+                                                        {i.productAttributes?.map((k, t) => (
                                                             <li key={t}>
                                                                 {k.value}
                                                             </li>

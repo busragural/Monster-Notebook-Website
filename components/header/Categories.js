@@ -5,12 +5,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import catName from '@/helpers/CategoryName'
 import { getImages } from '@/helpers/CategoryDetails'
-import MobileMenu from './MobileMenu'
-import useCategoryData from '@/helpers/useCategoryData'
 
 
 const Categories = ({ data, gamePcs, workPcs, workSta, monitor }) => {
 
+    
     return (
         <div className='bottom-tab'>
             <div className='bottom-in'>
@@ -31,20 +30,21 @@ const Categories = ({ data, gamePcs, workPcs, workSta, monitor }) => {
                                                             <ul className='sub-wrapper-ul'>
 
                                                                 {item === 'Tüm Laptoplar' && data.some((k) => k.name === 'Tüm Laptoplar') ? (
-                                                                    getImages(data[0]?.childCategories?.map((i) => i.childCategories).flat())
+                                                                    getImages(data[0]?.childCategories?.map((i) => i.childCategories).flat()) 
                                                                 ) : null}
+                                                                
 
                                                                 {item === 'Aksesuarlar' && data.some((k) => k.name === 'Aksesuarlar') ? (
                                                                     getImages(data[1]?.childCategories?.map((i) => i.childCategories).flat())
+                                                                    
                                                                 ) : null}
 
-                                                                {item === 'Oyun Bilgisayarları' ? getImages(gamePcs[0]?.childCategories) : null}
+                                                                {item === 'Oyun Bilgisayarları' ? getImages(gamePcs[0]?.childCategories)  : null}
                                                                 {item === 'Oyuncu Monitörü' ? getImages(monitor[0]?.childCategories) : null}
-                                                                {item === 'İş Bilgisayarları' ? getImages(workPcs[0]?.childCategories) : null}
-                                                                {item === 'İş İstasyonları' ? getImages(workSta[0]?.childCategories) : null}
+                                                                {item === 'İş Bilgisayarları' ? getImages(workPcs[0]?.childCategories)  : null}
+                                                                {item === 'İş İstasyonları' ? getImages(workSta[0]?.childCategories): null}
                                                     
                                                             </ul>
-
                                                         </div>
                                                     </div>
 

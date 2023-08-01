@@ -1,11 +1,14 @@
+import { searchByName } from "@/helpers/ProductID";
 import axios from "axios";
 
-export const getAbraBanner = async () => {
+export const getAbraBanner = async ({ params }) => {
+  let id=searchByName(params.products);
+
 
   const body = {
     "bannerCode": 0,
     "productId": 0,
-    "categoryId": 6823
+    "categoryId": id
   };
   try {
     const response = await axios.post(process.env.API_URL_DOUBLE_BANNER, body, {

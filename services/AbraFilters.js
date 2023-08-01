@@ -1,25 +1,8 @@
+import { searchByName } from "@/helpers/ProductID";
 import axios from "axios";
 
 export const getAbraFilter = async ({ params }) => {
-  let id = 0;
-  if (params.products === "Abra") {
-    id = 6823
-  } else if (params.products === "Tulpar") {
-    id = 6826
-  }
-  else if (params.products === "Semruk") {
-    id = 6829
-  }
-  else if (params.products === "Markut") {
-    id = 6831
-  }
-  else if (params.products === "Huma") {
-    id = 6833
-  }
-  else if (params.products === "Oyuncu%20Mouse") {
-    id = 1666
-  }
-
+  let id=searchByName(params.products);
 
   const body = {
     "catId": id
