@@ -3,30 +3,30 @@ import React, { useEffect, useState } from 'react'
 import '@/styles/AbraBanner.css'
 import Link from 'next/link';
 
-export const Banner = ({ abraBanner }) => {
+export const Banner = ({ productBanner }) => {
 
     const [bannerImage, setBannerImage] = useState('');
     const [bannerTitle, setBannerTitle] = useState('');
     const [bannerContent, setBannerContent] = useState('');
 
     useEffect(() => {
-        if (abraBanner && abraBanner.length > 0) {
+        if (productBanner && productBanner.length > 0) {
 
-            const imageUrl = abraBanner
+            const imageUrl = productBanner
                 .map(item => item.parameters.find(param => param.key === 'prmImg'))
                 .filter(Boolean)
                 .map(param => `https://img-monsternotebook.mncdn.com${param.value}`);
             setBannerImage(imageUrl);
 
 
-            const title = abraBanner
+            const title = productBanner
                 .map(item => item.parameters.find(param => param.key === 'prmTitle'))
                 .filter(Boolean)
                 .map(param => param.value);
             setBannerTitle(title);
 
 
-            const content = abraBanner
+            const content = productBanner
                 .map(item => item.parameters.find(param => param.key === 'prmContent'))
                 .filter(Boolean)
                 .map(param => param.value);
@@ -36,7 +36,7 @@ export const Banner = ({ abraBanner }) => {
 
         
 
-    }, [abraBanner]);
+    }, [productBanner]);
 
 
 

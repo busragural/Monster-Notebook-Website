@@ -22,7 +22,7 @@ export const getBanners = async () => {
     return bannerData;
 
   } catch (error) {
-    console.error('Error:', error);
+    //console.error('Error:', error);
     // Handle error appropriately
     throw error;
   }

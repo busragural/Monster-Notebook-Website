@@ -3,91 +3,99 @@ import React, { useEffect, useState } from 'react'
 import '@/styles/AbraProducts.css'
 import Link from 'next/link'
 import { IoIosArrowForward } from 'react-icons/io'
-import { useRouter } from 'next/navigation'
+import { AiFillStar } from 'react-icons/ai'
+import { searchByName } from '@/helpers/ProductID'
+import useSWR from 'swr';
+
+const Products = ({ products, params }) => {
 
 
-const Products = ({ abraFilters, abraProducts }) => {
-
-    const router = useRouter();
-    const [smallImg, setsmallImg] = useState([]);
-    const [name, setName] = useState([]);
-    const [price, setPrice] = useState([]);
-    const [attribute, setAttribute] = useState([])
-    const [filter, setFilter] = useState([])
-
-    useEffect(() => {
-
-        //console.log("abra all", abraProducts)
-        const imgs = abraProducts.map((item) => item.image.SmallImageUrl);
-        setsmallImg(imgs);
-
-        const names = abraProducts.map((item) => item.name);
-        setName(names);
-
-        const prices = abraProducts.map((item) => item.listPrice);
-        setPrice(prices);
-
-        const attributes = abraProducts.map((item) => item.productAttributes)
-        setAttribute(attributes);
-
-
-    }, [abraProducts])
-
-
-    const initialOpenStatus = abraFilters.map(() => true);
+    //filtre kutularini acip kapatmak icin
+    const initialOpenStatus = products.filters.map(() => true);
     const [isBoxBodyOpen, setIsBoxBodyOpen] = useState(initialOpenStatus);
-
-
     const toggleBoxBody = (index) => {
         setIsBoxBodyOpen((prevStatus) =>
             prevStatus.map((status, i) => (i === index ? !status : status))
         );
     };
 
+    //siralama kismini acip kapatmak icin
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
     const toggleDropdown = () => {
         setIsDropdownOpen(prevIsDropdownOpen => !prevIsDropdownOpen);
     };
 
+    //mobildeki filtre kismini acip kapatmak icin
     const [isFilterOpen, setIsFilterOpen] = useState(false);
-
     const toggleFilter = () => {
         setIsFilterOpen(prevIsDropdownOpen => !prevIsDropdownOpen);
     };
 
 
-    //////////////////
+    // filtreleme islemleri 
     const [selectedFilters, setSelectedFilters] = useState([]);
 
-    const areFiltersFromSameGroup = (filters) => {
-        if (filters.length === 0) return true;
-        const filterGroups = filters.map((filter) => {
-            return abraFilters.find((group) =>
-                group.filters.some((f) => f.filterName === filter)
-            );
-        });
-        return new Set(filterGroups).size === 1;
-    };
-    const handleFilterChange = (filterName) => {
+    const handleFilterChange = (filterName, filterGroup) => {
 
-        if (selectedFilters.includes(filterName)) {
-            setSelectedFilters((prevFilters) => prevFilters.filter((filter) => filter !== filterName));
+        if (selectedFilters.some(filter => filter.filterName === filterName && filter.filterGroup === filterGroup)) {
+            setSelectedFilters((prevFilters) =>
+                prevFilters.filter((filter) =>
+                    !(filter.filterName === filterName && filter.filterGroup === filterGroup)
+                )
+            );
         } else {
-            setSelectedFilters((prevFilters) => [...prevFilters, filterName]);
+
+
+            setSelectedFilters((prevFilters) => [
+                ...prevFilters,
+                {
+                    filterName,
+                    filterGroup
+                }
+
+            ]);
         }
     };
-    const filteredProducts = abraProducts.filter((product) => {
-        const lowerCaseFilters = selectedFilters.map(filter => filter.toLowerCase());
-        for (const filter of lowerCaseFilters) {
-            const wordsToSearch = filter.split(/\s+/);
-            if (!wordsToSearch.every(word => product.productAttributes.some(attr => attr.value.toLowerCase().includes(word)))) {
+
+    // let id = searchByName(params.products);
+
+    // const [filterParams, setFilterParams] = useState([]);
+    // const handleFilter = (filterID) => {
+    //     const bodyParam = {
+    //         "searchText": "",
+    //         "categoryId": id,
+    //         "filters": ["filterID"],
+    //         "sortType": "",
+    //         "page": 0,
+    //         "pageSize": 50
+
+    //     }
+    //     setFilterParams(bodyParam);
+
+    // }
+
+    const filteredProducts = products.data.filter((product) => {
+        //console.log("1", selectedFilters);
+        const filternames = selectedFilters.map(filter => filter.filterName);
+
+        for (const filter of filternames) {
+            const filterWords = filter.split(' ').filter(word => word.length > 0);
+            const productAttributes = product.productAttributes.map(attr => ({
+                name: attr.name,
+                value: attr.value,
+            }));
+            const matchedFilter = productAttributes.some(attr => {
+                const attrWords = attr.value.split(' ');
+                return filterWords.every(word => {
+                    return attr.name.includes(word) || attrWords.some(attrWord => attrWord.includes(word));
+                });
+            });
+            if (!matchedFilter) {
                 return false;
             }
         }
         return true;
     });
-
 
     return (
         <div className='product-main w-full flex '>
@@ -131,7 +139,7 @@ const Products = ({ abraFilters, abraProducts }) => {
                         </div>
                     </div>
                     <div className='left-cell2 '>
-                        {abraFilters.map((item, key) => (
+                        {products.filters.map((item, key) => (
                             <>
                                 <div className='filter-box box-cat' key={key}>
                                     <div className='box-header text-white'>
@@ -155,8 +163,8 @@ const Products = ({ abraFilters, abraProducts }) => {
                                                                 type='checkbox'
                                                                 id={`filterCheckbox_${key}_${index}`}
                                                                 className='stock-checkbox text-white text-base px-0 w-auto'
-                                                                checked={selectedFilters.includes(j.filterName)}
-                                                                onChange={() => handleFilterChange(j.filterName)}
+                                                                checked={selectedFilters.some(filter => filter.filterName === j.filterName && filter.filterGroup === j.filterGroupName)}
+                                                                onChange={() => handleFilterChange(j.filterName, j.filterGroupName)}
                                                             />
                                                             <label
                                                                 htmlFor={`filterCheckbox_${key}_${index}`}
@@ -231,7 +239,7 @@ const Products = ({ abraFilters, abraProducts }) => {
                             <div className='left-filters'>
                                 <div className='left-filters-inner'>
                                     <div className='filter-cell'>
-                                        {abraFilters.map((item, key) => (
+                                        {products.filters.map((item, key) => (
                                             <>
                                                 <div className='filter-box box-cat' key={key}>
                                                     <div className='box-header text-white'>
@@ -278,10 +286,32 @@ const Products = ({ abraFilters, abraProducts }) => {
 
                         }
                     </div>
+
+                    <div className='pro-compare-select'>
+                        <div className='compare-select'>
+                            {selectedFilters.map((filter, index) => (
+                                <div className='selection'>
+                                    <span key={index}>{filter.filterName}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        {selectedFilters.length > 0 && (
+                            <div className='compare-delete'>
+                                <div className=''>
+                                    TÜMÜNÜ TEMİZLE
+                                </div>
+                            </div>
+                        )}
+
+
+
+                    </div>
+
                     <ul className='pro-content'>
                         {filteredProducts.map((i, index) => (
-                            
-                            <li className='' key={index}> 
+
+                            <li className='' key={index}>
                                 <div className='pro-inner'>
                                     <Link href={'/Abra'} className='pro-link'>
                                     </Link>
@@ -299,15 +329,37 @@ const Products = ({ abraFilters, abraProducts }) => {
                                     </div>
                                     <div className='pro-middle'>
                                         <div className='middle-content'>
+                                            <div className='w-full'>
+                                                <div className='compare-div'>
+                                                    <span>Karşılaştır</span>
+                                                </div>
+                                            </div>
                                             <div className='pro-cont'>
+                                                <div className='pro-comments'>
+
+                                                    <div className='pro-cmnt-inner'>
+                                                        <div className='flex text-gray-500'>
+                                                            <AiFillStar style={{ color: i.rating >= 20 ? "#e4951e" : "inherit" }} />
+                                                            <AiFillStar style={{ color: i.rating >= 40 ? "#e4951e" : "inherit" }} />
+                                                            <AiFillStar style={{ color: i.rating >= 60 ? "#e4951e" : "inherit" }} />
+                                                            <AiFillStar style={{ color: i.rating >= 80 ? "#e4951e" : "inherit" }} />
+                                                            <AiFillStar style={{ color: i.rating >= 100 ? "#e4951e" : "inherit" }} />
+                                                        </div>
+
+                                                        <span> {i.commentPoint} ({i.commentCount}) </span>
+                                                    </div>
+
+                                                </div>
+
                                                 <h3 className='pro-name'>
                                                     {i.name}
                                                 </h3>
-                                                <div className='pro-ozel'>
-                                                    <ul>
+                                                <div className='pro-ozel '>
+                                                    <ul >
                                                         {i.productAttributes?.map((k, t) => (
-                                                            <li key={t}>
-                                                                {k.value}
+                                                            <li key={t} >
+
+                                                                •  {k.value}
                                                             </li>
                                                         ))}
                                                     </ul>
@@ -320,15 +372,18 @@ const Products = ({ abraFilters, abraProducts }) => {
                                             <div className='price-wrapper'>
 
                                                 <div className='price-inner'>
-                                                    {price[index] !== null && price[index] !== undefined ? price[index].toLocaleString() : ""}TL
+                                                    {i.listPrice !== null && i.listPrice !== undefined ? i.listPrice.toLocaleString() : ""}TL
                                                 </div>
 
+                                            </div>
+                                            <div className='price-taksit'>
+                                                <span className='taksit-span'>2.834,54 TL'den başlayan taksit seçenekleri</span>
                                             </div>
                                         </div>
                                         <div className='pro-basket'>
                                             <div className='basket-detail'>
                                                 <Link href={'/Abra'} className='basket-detail-link'>
-                                                    <span>
+                                                    <span className='bdl-span'>
                                                         SEPETE EKLE
                                                     </span>
                                                 </Link>
