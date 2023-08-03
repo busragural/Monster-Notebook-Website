@@ -45,7 +45,7 @@ export const nameID = [
         id: 6752
     }, 
     {
-        name: "Diğer-Ekipmanlar",
+        name: "Diger-Ekipmanlar",
         id: 6889
     }, 
     {

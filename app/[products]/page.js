@@ -1,4 +1,3 @@
-
 import { getProductBanner } from '@/services/ProductBanner.js'
 import React from 'react'
 import { Banner } from '@/components/main-abra/Banner.js'
@@ -25,14 +24,13 @@ export default async function Home({ params }) {
     }
     const productBanner = await getProductBanner({ params });
     const products = await getProducts(body);
-
+  
     return (
         <div className='site-content relative bg-[#1B1C1D] '>
             <div className='page-content relative pb-5'>
                 <div className='page-container max-w-full w-full'>
                     <Banner productBanner={productBanner} />
                     <Products products={products} params={params} />
-
                 </div>
             </div>
         </div>

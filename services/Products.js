@@ -1,10 +1,7 @@
-import { searchByName } from "@/helpers/ProductID";
+
 import axios from "axios";
 
 export const getProducts = async (body) => {
-    
-
-   
     try {
         const response = await axios.post(process.env.API_URL_PRODUCTS, body, {
             headers: {
@@ -14,7 +11,7 @@ export const getProducts = async (body) => {
                 'Ocp-Apim-Subscription-Key': process.env.API_KEY_PRODUCTS,
             }
         })
-        const bannerData = response.data.data;
+        
       const bannersData = response.data
         
         //console.log("data", bannerData);

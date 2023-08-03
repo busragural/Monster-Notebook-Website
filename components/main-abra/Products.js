@@ -1,14 +1,47 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import '@/styles/AbraProducts.css'
+import '@/styles/ProductFilter.css'
 import Link from 'next/link'
 import { IoIosArrowForward } from 'react-icons/io'
 import { AiFillStar } from 'react-icons/ai'
 import { searchByName } from '@/helpers/ProductID'
-import useSWR from 'swr';
+import axios from 'axios'
 
-const Products = ({ products, params }) => {
+export const fetchProducts = async (body) => {
+    try {
+        const response = await axios.post(process.env.API_URL_PRODUCTS, body, {
+            headers: {
+                'x-monster-client-channel': 'MobileAppTr',
+                'Content-Type': 'application/json',
+                'Cache-Control': 'no-cache',
+                'Ocp-Apim-Subscription-Key': process.env.API_KEY_PRODUCTS,
+            }
+        });
 
+        const bannersData = response.data;
+
+        return bannersData;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+};
+
+// export async function getStaticProps(){
+//     const [allData, setAllData] = useState([])
+//     const fetchedData = await fetchProducts(body);
+//     setAllData(fetchedData);
+
+//     return{
+//         props: {
+//             allData,
+//         },
+//     }
+// }
+
+
+const ProTest = ({ products, params, allData }) => {
+    const [data, setData] = useState([])
 
     //filtre kutularini acip kapatmak icin
     const initialOpenStatus = products.filters.map(() => true);
@@ -35,99 +68,86 @@ const Products = ({ products, params }) => {
     // filtreleme islemleri 
     const [selectedFilters, setSelectedFilters] = useState([]);
 
-    const handleFilterChange = (filterName, filterGroup) => {
-
-        if (selectedFilters.some(filter => filter.filterName === filterName && filter.filterGroup === filterGroup)) {
+    const handleFilterChange = (filterName, filterGroup, filterId) => {
+        if (selectedFilters.some(filter => filter.filterName === filterName && filter.filterGroup === filterGroup && filter.filterId === filterId)) {
             setSelectedFilters((prevFilters) =>
                 prevFilters.filter((filter) =>
-                    !(filter.filterName === filterName && filter.filterGroup === filterGroup)
+                    !(filter.filterName === filterName && filter.filterGroup === filterGroup && filter.filterId === filterId)
                 )
             );
         } else {
-
-
             setSelectedFilters((prevFilters) => [
                 ...prevFilters,
                 {
                     filterName,
-                    filterGroup
+                    filterGroup,
+                    filterId
                 }
-
             ]);
         }
     };
 
-    // let id = searchByName(params.products);
+    const handleClearAllFilters = () => {
+        setSelectedFilters([]);
+    };
 
-    // const [filterParams, setFilterParams] = useState([]);
-    // const handleFilter = (filterID) => {
-    //     const bodyParam = {
-    //         "searchText": "",
-    //         "categoryId": id,
-    //         "filters": ["filterID"],
-    //         "sortType": "",
-    //         "page": 0,
-    //         "pageSize": 50
 
-    //     }
-    //     setFilterParams(bodyParam);
+    useEffect(() => {
+        let id = searchByName(params.products);
 
-    // }
+        let filterIds = selectedFilters.map(filter => filter.filterId);
+        const body = {
+            "searchText": "",
+            "categoryId": id,
+            "filters": filterIds.map(id => id),
+            "sortType": "",
+            "page": 0,
+            "pageSize": 50
+        };
 
-    const filteredProducts = products.data.filter((product) => {
-        //console.log("1", selectedFilters);
-        const filternames = selectedFilters.map(filter => filter.filterName);
+        const fetchData = async () => {
+            try {
+                const fetchedData = await fetchProducts(body);
+                setData(fetchedData);
 
-        for (const filter of filternames) {
-            const filterWords = filter.split(' ').filter(word => word.length > 0);
-            const productAttributes = product.productAttributes.map(attr => ({
-                name: attr.name,
-                value: attr.value,
-            }));
-            const matchedFilter = productAttributes.some(attr => {
-                const attrWords = attr.value.split(' ');
-                return filterWords.every(word => {
-                    return attr.name.includes(word) || attrWords.some(attrWord => attrWord.includes(word));
-                });
-            });
-            if (!matchedFilter) {
-                return false;
+            } catch (error) {
+                console.error('Error:', error);
             }
-        }
-        return true;
-    });
+        };
+        fetchData();
+    }, [selectedFilters]);
 
     return (
-        <div className='product-main w-full flex '>
+        <div className='product-main w-full flex mt-0 mr-auto mb-0 ml-auto flex-row '>
 
             {/*burasi sol filtre kismi */}
-            <div className='pro-left relative '>
+            <div className='pro-left relative pt-o pr-0 pb-0 pl-5 my-12 mx-0'>
                 <div className='left-inner'>
                     <div className='left-cell1'>
-                        <div className='filter-box box-cat'>
-                            <div className='box-header'>
+                        <div className='filter-box box-cat mt-0 mr-0 mb-5 ml-0 inline-block w-full '>
+                            <div className='box-header p-4 -mb-px'>
                                 <span>
-                                    <Link href={'/'} className='box-header-link'>
-                                        <span>Kategoriler
+                                    <Link href={'/'} className='box-header-link text-white p-0 text-left relative block'>
+                                        <span className='text-base flex justify-between items-center uppercase tracking-wider'>
+                                            Kategoriler
                                             <IoIosArrowForward className='box-arrow' />
                                         </span>
-
                                     </Link>
                                 </span>
                             </div>
                             <div className='box-body'>
-                                <ul className='box-body-content'>
-                                    <li>
+                                <ul className='box-body-content leading-6 pt-1 pr-2.5 pb-3.5 pl-3.5'>
+                                    <li className='relative flex flex-wrap w-full'>
                                         <Link href={'/'} className='text-white text-base py-2.5 px-0 block w-auto'>
                                             Tüm Laptoplar
                                         </Link>
                                     </li>
-                                    <li>
+                                    <li className='relative flex flex-wrap w-full'>
                                         <Link href={'/'} className='text-white text-base py-2.5 px-0 block w-auto'>
                                             Tüm Laptoplar
                                         </Link>
                                     </li>
-                                    <li>
+                                    <li className='relative flex flex-wrap w-full'>
                                         <Link href={'/'} className='text-white text-base py-2.5 px-0 block w-auto'>
                                             Tüm Laptoplar
                                         </Link>
@@ -139,13 +159,13 @@ const Products = ({ products, params }) => {
                         </div>
                     </div>
                     <div className='left-cell2 '>
-                        {products.filters.map((item, key) => (
+                        {data?.filters?.map((item, key) => (
                             <>
-                                <div className='filter-box box-cat' key={key}>
-                                    <div className='box-header text-white'>
+                                <div className='filter-box box-cat mt-0 mr-0 mb-5 ml-0 inline-block w-full ' key={key}>
+                                    <div className='box-header  p-4 -mb-px text-white'>
                                         <span onClick={() => toggleBoxBody(key)}>
-                                            <div className='box-header-link'>
-                                                <span>
+                                            <div className='box-header-link text-white p-0 text-left relative block'>
+                                                <span className='cursor-pointer text-base flex justify-between items-center uppercase tracking-wider'>
                                                     {item.name}
                                                     <IoIosArrowForward className={`box-arrow ${isBoxBodyOpen[key] ? 'open' : 'close'}`} />
                                                 </span>
@@ -155,16 +175,16 @@ const Products = ({ products, params }) => {
                                     </div>
                                     {isBoxBodyOpen[key] && (
                                         <div className='box-body'>
-                                            <ul className='box-body-content'>
+                                            <ul className='box-body-content leading-6 pt-1 pr-2.5 pb-3.5 pl-3.5'>
                                                 {item.filters.map((j, index) => (
-                                                    <li key={index}>
+                                                    <li key={index} className='relative flex flex-wrap w-full'>
                                                         <div className=' py-2.5 px-0 block w-auto'>
                                                             <input
                                                                 type='checkbox'
                                                                 id={`filterCheckbox_${key}_${index}`}
-                                                                className='stock-checkbox text-white text-base px-0 w-auto'
-                                                                checked={selectedFilters.some(filter => filter.filterName === j.filterName && filter.filterGroup === j.filterGroupName)}
-                                                                onChange={() => handleFilterChange(j.filterName, j.filterGroupName)}
+                                                                className='stock-checkbox text-white text-base px-0 w-5 h-5 '
+                                                                checked={selectedFilters.some(filter => filter.filterName === j.filterName && filter.filterGroup === j.filterGroupName && filter.filterId === j.filterId)}
+                                                                onChange={() => handleFilterChange(j.filterName, j.filterGroupName, j.filterId)}
                                                             />
                                                             <label
                                                                 htmlFor={`filterCheckbox_${key}_${index}`}
@@ -191,7 +211,7 @@ const Products = ({ products, params }) => {
 
             {/*burasi sağ urun kismi */}
             <div className='pro-right relative'>
-                <div className='right-inner'>
+                <div className='right-inner pt-0 pr-0 pb-3 pl-2'>
                     <div className='mobile-tab'>
                         <div className='mobile-buttons'>
                             <div className={`filter-btn ${isFilterOpen ? 'open' : ''}`} onClick={toggleFilter}>
@@ -239,13 +259,13 @@ const Products = ({ products, params }) => {
                             <div className='left-filters'>
                                 <div className='left-filters-inner'>
                                     <div className='filter-cell'>
-                                        {products.filters.map((item, key) => (
+                                        {data?.filters?.map((item, key) => (
                                             <>
-                                                <div className='filter-box box-cat' key={key}>
-                                                    <div className='box-header text-white'>
+                                                <div className='filter-box box-cat mt-0 mr-0 mb-5 ml-0 inline-block w-full ' key={key}>
+                                                    <div className='box-header  p-4 -mb-px text-white'>
                                                         <span onClick={() => toggleBoxBody(key)}>
-                                                            <div className='box-header-link'>
-                                                                <span>
+                                                            <div className='box-header-link text-white p-0 text-left relative block'>
+                                                                <span className='text-base flex justify-between items-center uppercase tracking-wider'>
                                                                     {item.name}
                                                                     <IoIosArrowForward className={`box-arrow ${isBoxBodyOpen[key] ? 'open' : 'close'}`} />
                                                                 </span>
@@ -254,12 +274,23 @@ const Products = ({ products, params }) => {
                                                     </div>
                                                     {isBoxBodyOpen[key] && (
                                                         <div className='box-body'>
-                                                            <ul className='box-body-content'>
+                                                            <ul className='box-body-content leading-6 pt-1 pr-2.5 pb-3.5 pl-3.5'>
                                                                 {item.filters.map((j, index) => (
-                                                                    <li key={index}>
+                                                                    <li key={index} className='relative flex flex-wrap w-full'>
                                                                         <div className=' py-2.5 px-0 block w-auto'>
-                                                                            <input type="checkbox" id="stockCheckbox" className='stock-checkbox  text-white text-base  px-0  w-auto' />
-                                                                            <label htmlFor="stockCheckbox" className='px-2 text-lg text-[#a4a4a5] '>{j.filterName} ({j.count})</label>
+                                                                            <input
+                                                                                type='checkbox'
+                                                                                id={`filterCheckbox_${key}_${index}`}
+                                                                                className='stock-checkbox text-white text-base px-0 w-5 h-5'
+                                                                                checked={selectedFilters.some(filter => filter.filterName === j.filterName && filter.filterGroup === j.filterGroupName && filter.filterId === j.filterId)}
+                                                                                onChange={() => handleFilterChange(j.filterName, j.filterGroupName, j.filterId)}
+                                                                            />
+                                                                            <label
+                                                                                htmlFor={`filterCheckbox_${key}_${index}`}
+                                                                                className='px-2 text-lg text-[#a4a4a5]'
+                                                                            >
+                                                                                {j.filterName} ({j.count})
+                                                                            </label>
                                                                         </div>
                                                                     </li>
                                                                 ))}
@@ -287,18 +318,20 @@ const Products = ({ products, params }) => {
                         }
                     </div>
 
-                    <div className='pro-compare-select'>
-                        <div className='compare-select'>
+                    <div className='pro-compare-select pt-0 pr-40 pb-0 pl-2 w-full flex justify-between'>
+                        <div className='compare-select flex w-auto justify-start flex-wrap'>
                             {selectedFilters.map((filter, index) => (
-                                <div className='selection'>
-                                    <span key={index}>{filter.filterName}</span>
+                                <div className='selection mr-2.5 pt-1 pr-2.5 pb-1 pl-2.5 relative mb-2.5 bg-[#323334]'>
+                                    <span key={index} className='text-sm text-[#00FF00] block pr-7'>
+                                        {filter.filterName}
+                                    </span>
                                 </div>
                             ))}
                         </div>
 
                         {selectedFilters.length > 0 && (
-                            <div className='compare-delete'>
-                                <div className=''>
+                            <div className='compare-delete cursor-pointer align-middle p-2 right-2 !inline-block' onClick={handleClearAllFilters}>
+                                <div className='text-sm text-[#00FF00]'>
                                     TÜMÜNÜ TEMİZLE
                                 </div>
                             </div>
@@ -308,36 +341,30 @@ const Products = ({ products, params }) => {
 
                     </div>
 
-                    <ul className='pro-content'>
-                        {filteredProducts.map((i, index) => (
+                    <ul className='pro-content flex flex-wrap'>
+                        {data?.data?.map((i, index) => (
 
-                            <li className='' key={index}>
-                                <div className='pro-inner'>
-                                    <Link href={'/Abra'} className='pro-link'>
+                            <li className='w-1/3 pt-0 pr-2 pb-4 pl-2 min-h-full relatife h-auto' key={index}>
+                                <div className='pro-inner relative flex m-0 bg-[#161617] h-full'>
+                                    <Link href={'/Abra'} className='pro-link absolute top-0 left-0 w-full h-full'>
                                     </Link>
-                                    <div className='pro-top'>
-                                        <div className='pro-image'>
-                                            {/* <Image className='pro-image-img'
-                                           src={smallImg[index]}
-                                            width={100}
-                                            height={100}
-                                        /> */}
-                                            <img
-                                                src={i.image.SmallImageUrl} />
+                                    <div className='pro-top p-5 relative bg-center bg-cover '>
+                                        <div className='pro-image relative overflow-hidden'>
+
+                                            <img src={i.image.SmallImageUrl} className='w-full h-full' />
 
                                         </div>
                                     </div>
-                                    <div className='pro-middle'>
-                                        <div className='middle-content'>
+                                    <div className='pro-middle text-left w-full' >
+                                        <div className='middle-content p-0 w-full h-full flex flex-wrap items-end justify-end'>
                                             <div className='w-full'>
-                                                <div className='compare-div'>
-                                                    <span>Karşılaştır</span>
+                                                <div className='compare-div relative bg-black w-full inline-block py-2.5 px-5'>
+                                                    <span className='!inline-block text-[#a4a4a5] text-lg'>Karşılaştır</span>
                                                 </div>
                                             </div>
-                                            <div className='pro-cont'>
+                                            <div className='pro-cont w-full relative m-0 p-5'>
                                                 <div className='pro-comments'>
-
-                                                    <div className='pro-cmnt-inner'>
+                                                    <div className='pro-cmnt-inner flex items-center'>
                                                         <div className='flex text-gray-500'>
                                                             <AiFillStar style={{ color: i.rating >= 20 ? "#e4951e" : "inherit" }} />
                                                             <AiFillStar style={{ color: i.rating >= 40 ? "#e4951e" : "inherit" }} />
@@ -346,19 +373,18 @@ const Products = ({ products, params }) => {
                                                             <AiFillStar style={{ color: i.rating >= 100 ? "#e4951e" : "inherit" }} />
                                                         </div>
 
-                                                        <span> {i.commentPoint} ({i.commentCount}) </span>
+                                                        <span className='text-[#e4951e] text-lg'> {i.commentPoint} ({i.commentCount}) </span>
                                                     </div>
 
                                                 </div>
 
-                                                <h3 className='pro-name'>
+                                                <h3 className='pro-name max-h-11 mb-5 block text-xl text-white '>
                                                     {i.name}
                                                 </h3>
-                                                <div className='pro-ozel '>
-                                                    <ul >
+                                                <div className='pro-ozel max-h-32 mb-5 overflow-hidden text-[#a4a4a5] text-ellipsis text-xs'>
+                                                    <ul className='relative overflow-hidden text-ellipsis'>
                                                         {i.productAttributes?.map((k, t) => (
-                                                            <li key={t} >
-
+                                                            <li key={t} className='relative text-ellipsis overflow-hidden w-full h-auto text-[#a4a4a5] whitespace-nowrap !text-[14px] list-inside opacity-100'>
                                                                 •  {k.value}
                                                             </li>
                                                         ))}
@@ -367,23 +393,21 @@ const Products = ({ products, params }) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className='pro-bottom'>
-                                        <div className='pro-price'>
-                                            <div className='price-wrapper'>
-
-                                                <div className='price-inner'>
+                                    <div className='pro-bottom flex w-full pt-0 pr-5 pb-5 pl-5 items-end mt-auto flex-wrap'>
+                                        <div className='pro-price flex flex-wrap w-full whitespace-nowrap pt-0 pr-0 pb-4 pl-0'>
+                                            <div className='price-wrapper block flex-auto '>
+                                                <div className='price-inner text-white text-2xl mr-3 mt-2.5 font-bold tracking-wider'>
                                                     {i.listPrice !== null && i.listPrice !== undefined ? i.listPrice.toLocaleString() : ""}TL
                                                 </div>
-
                                             </div>
-                                            <div className='price-taksit'>
-                                                <span className='taksit-span'>2.834,54 TL'den başlayan taksit seçenekleri</span>
+                                            <div className='price-taksit relative w-full'>
+                                                <span className='taksit-span block mb-2 text-sm text-[#00FF00] !whitespace-break-spaces '>2.834,54 TL'den başlayan taksit seçenekleri</span>
                                             </div>
                                         </div>
-                                        <div className='pro-basket'>
-                                            <div className='basket-detail'>
-                                                <Link href={'/Abra'} className='basket-detail-link'>
-                                                    <span className='bdl-span'>
+                                        <div className='pro-basket flex items-end '>
+                                            <div className='basket-detail relative pt-5'>
+                                                <Link href={'/Abra'} className='basket-detail-link w-full block text-center overflow-hidden p-0 hover:bg-[#26df2e]'>
+                                                    <span className='bdl-span text-white text-base block py-3 px-2.5 font-semibold tracking-wider h-12 hover:text-black'>
                                                         SEPETE EKLE
                                                     </span>
                                                 </Link>
@@ -400,4 +424,4 @@ const Products = ({ products, params }) => {
     )
 }
 
-export default Products
+export default ProTest
