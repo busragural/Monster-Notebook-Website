@@ -24,7 +24,7 @@ export const getBanners = async () => {
   } catch (error) {
     //console.error('Error:', error);
     // Handle error appropriately
-    throw error;
+    //throw error;
   }
 
 

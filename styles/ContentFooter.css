@@ -5,9 +5,11 @@
     width: 100%;
 
 }
-
 .content-div {
     margin: 60px;
 }
 
-@media (max-width: 960px) {}
+.show-more {
+    visibility: hidden;
+  
+  }

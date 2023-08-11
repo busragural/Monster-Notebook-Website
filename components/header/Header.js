@@ -11,7 +11,6 @@ import { PiShoppingCartLight } from 'react-icons/pi'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import headerTab from '@/helpers/HeaderTab'
 import MobileMenu from './MobileMenu'
-import Categories from './Categories'
 const Header = ({  data, gamePcs, workPcs, workSta, monitor }) => {
 
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -68,7 +67,7 @@ const Header = ({  data, gamePcs, workPcs, workSta, monitor }) => {
             </div>
             <div className='hidden md:inline-flex'>
               <div className=''>Giriş yap</div>
-              <div className=' text-xs -my-2 text-[#FBBD08]'>Kayıt ol</div>
+              {/* <div className=' text-xs -my-2 text-[#FBBD08]'>Kayıt ol</div> */}
             </div>
           </div>
           <div className='text-white md:border border-zinc-600 md:px-3 py-2 flex items-center gap-1'>

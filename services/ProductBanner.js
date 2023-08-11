@@ -27,7 +27,7 @@ export const getProductBanner = async ({ params }) => {
   } catch (error) {
     //console.error('Error:', error);
     // Handle error appropriately
-    throw error;
+    //throw error;
   }
 
 

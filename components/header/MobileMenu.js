@@ -8,7 +8,6 @@ import catName from '@/helpers/CategoryName'
 import headerTab from '@/helpers/HeaderTab.js'
 import { RxCross1 } from 'react-icons/rx'
 import { getSubCategories } from '@/helpers/CategoryDetails'
-import useCategoryData from '@/helpers/useCategoryData'
 import '@/styles/Categories.css'
 import {IoIosArrowForward} from 'react-icons/io' 
 
@@ -19,7 +18,6 @@ const MobileMenu = ({ onCloseMenu, data, gamePcs, workPcs, workSta, monitor }) =
         catName.map(() => false)
       );
     
-      // Fonksiyon, belirli "item" için "mobileSubNavState" durumunu değiştirir
       const handleCatDataClick = (index) => {
         setMobileSubNavStates((prevStates) => {
           const newStates = [...prevStates];
@@ -30,7 +28,7 @@ const MobileMenu = ({ onCloseMenu, data, gamePcs, workPcs, workSta, monitor }) =
 
 
     return (
-        <div className='nav-main2 top-0 left-0 bottom-0 h-screen w-screen bg-[#161617] p-0 absolute '>
+        <div className='nav-main2  '>
             <div className='mobile-element2 top-0 flex items-center justify-between  '>
                 <div className='mb-logo w-full'>
                     <Link href={'/'} className='logo-link uppercase'>

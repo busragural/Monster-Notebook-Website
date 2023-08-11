@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import '@/styles/Categories.css'
 
-const convertToEnglish = (text) => {
+export const convertToEnglish = (text) => {
     const turkishCharacters = {
         'ı': 'i', 'ğ': 'g', 'ü': 'u', 'ş': 's', 'ö': 'o', 'ç': 'c',
         'İ': 'I', 'Ğ': 'G', 'Ü': 'U', 'Ş': 'S', 'Ö': 'O', 'Ç': 'C',
@@ -18,17 +18,17 @@ export const getImages = (categories) => {
             {categories?.map((j, value) => {
                 const englishName = convertToEnglish(j.name);
                 const slug = englishName.split(' ').join('-');
-                
+
                 return (
-                    <li className='sub-wrapper-li' key={value}>
-                        <Link href={`/${slug}`} className='sub-wrapper-link'>
-                            <Image
+                    <li className='sub-wrapper-li text-center mb-0 w-full opacity-100 h-full cursor-pointer relative shrink-0' key={value}>
+                        <Link href={`/${slug}`} className='sub-wrapper-link relative p-0 text-black text-base block'>
+                            <Image className="sub-image relative z-[1] w-20 h-20 block max-w-full object-contain mx-auto mb-2.5"
                                 src={j.imageUrl}
                                 width={100}
                                 height={100}
                                 alt=''
                             />
-                            <span>{j.name}</span>
+                            <span className="text-base inline text-white relative">{j.name}</span>
                         </Link>
                     </li>
                 );
@@ -42,14 +42,18 @@ export const getImages = (categories) => {
 export const getSubCategories = (categories) => {
     return (
         <div className=''>
-            {categories?.map((j) => (
-                <li className='sub-wrapper-li'>
-                    <Link href={'/'} className='sub-wrapper-link'>
+            {categories?.map((j) => {
+                const englishName = convertToEnglish(j.name);
+                const slug = englishName.split(' ').join('-');
 
-                        <span>{j.name}</span>
-                    </Link>
-                </li>
-            ))}
+                return (
+                    <li className='sub-wrapper-li text-center mb-0 w-full opacity-100 h-full cursor-pointer relative shrink-0'>
+                        <Link href={`/${slug}`} className='sub-wrapper-link '>
+
+                            <span className="text-white ">{j.name}</span>
+                        </Link>
+                    </li>
+                )})}
         </div>
     );
 };

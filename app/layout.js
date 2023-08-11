@@ -3,7 +3,7 @@ import Footer from '@/components/footer/Footer'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { Saira_Condensed } from 'next/font/google'
-import { getAksesuar, getGamePCs, getMonitor, getParentData, getWorkPCs, getWorkStations } from '@/services/TabCategories'
+import { getGamePCs, getMonitor, getParentData, getWorkPCs, getWorkStations } from '@/services/TabCategories'
 import Categories from '@/components/header/Categories'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -22,15 +22,12 @@ export default async function RootLayout({ children }) {
   const monitor = await getMonitor();
   return (
     <html lang="en">
-
       <body className={saira_condensed.className}>
-        
         <Header  data = {dataParentCat} gamePcs={gamePcs} workPcs={workPcs} workSta={workSta} monitor= {monitor}/>
         <Categories data = {dataParentCat} gamePcs={gamePcs} workPcs={workPcs} workSta={workSta} monitor= {monitor} />
         <main>
           {children}
         </main>
-        
         <Footer />
       </body>
     </html>

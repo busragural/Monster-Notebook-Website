@@ -1,10 +1,9 @@
 import { getProductBanner } from '@/services/ProductBanner.js'
 import React from 'react'
-import { Banner } from '@/components/main-abra/Banner.js'
-import Products from '@/components/main-abra/Products.js'
+import { Banner } from '@/components/main-product/Banner.js'
+import Products from '@/components/main-product/Products.js'
 import { getProducts } from '@/services/Products'
-import { searchByName } from '@/helpers/ProductID'
-
+import { nameID, searchByName } from '@/helpers/ProductID'
 
 export const metadata = {
     title: 'Abra Oyun Bilgisayarı Serisi ile Gücü Hissedin | Monster',
@@ -22,9 +21,9 @@ export default async function Home({ params }) {
         "page": 0,
         "pageSize": 50
     }
-    const productBanner = await getProductBanner({ params });
+    const productBanner = await getProductBanner({ params })
     const products = await getProducts(body);
-  
+
     return (
         <div className='site-content relative bg-[#1B1C1D] '>
             <div className='page-content relative pb-5'>
@@ -36,4 +35,3 @@ export default async function Home({ params }) {
         </div>
     )
 }
-

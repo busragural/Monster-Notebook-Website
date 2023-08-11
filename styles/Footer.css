@@ -1,74 +1,8 @@
-.show-more {
-  visibility: hidden;
-
-}
-
-.content-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-
-
-.send-message {
-  width: 25%;
-  margin-right: 20px;
-}
-
-.msg-icon {
-  flex: none !important;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.msg-icon-div {
-  min-width: 46px;
-  background-color: #161617;
-  height: 46px;
-
-}
-
-.msg-text {
-  padding: 0 12px;
-  letter-spacing: 1.6px;
-  font-size: 16px;
-  width: 100% !important;
-}
-
-.contact-number {
-  width: 25%;
-}
-
-.site-footer-mesaj {
-  width: 100%;
-  display: block;
-  max-width: 1240px;
-  padding: 0 15px;
-  margin: 0 auto 0 auto;
-}
-
-.lblBanner {
-  box-sizing: border-box;
-  text-align: left;
-}
-
-.all-ftr {
-  position: relative;
-}
-
-.all-div-ftr {
-  border-top: 1px solid #323334;
-  border-bottom: 1px solid #323334;
-  padding: 24px 0 24px;
-}
-
 .social-icon {
   display: inline-block;
   flex: none !important;
   font-size: 32px;
 }
-
 
 .social-link {
   background-color: #161617;
@@ -76,37 +10,6 @@
   padding: 12px;
 }
 
-
-.ftr-link {
-  width: 100%;
-  display: table;
-  max-width: 1240px;
-  padding: 0 15px;
-  margin: 0 auto 0 auto;
-}
-
-.ftr-all {
-  background-color: #1B1C1D;
-  position: relative;
-  padding: 50px 0 50px 0;
-
-  bottom: 0;
-  z-index: 2;
-  width: 100%;
-
-}
-
-.ftr-div {
-  width: 100%;
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
-}
-
-.ftr-menu {
-  width: 100%;
-  display: flex;
-}
 
 .ftr-menu ul {
   display: inline-block;
@@ -159,27 +62,7 @@
 }
 
 
-.ftr-copyright {
-  background-color: #161617;
-  border-top: 4px solid #00ff00;
-  text-align: center;
-}
-
-.ftr-cpy-wrapper {
-  width: 100%;
-  margin: 0 auto 0 auto;
-  max-width: 1230px;
-  color: #fff;
-  padding: 40px 15px 30px 15px;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-
 @media (max-width: 960px) {
-
   .show-more {
     visibility: visible;
   }

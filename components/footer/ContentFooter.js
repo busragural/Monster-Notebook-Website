@@ -11,7 +11,7 @@ const ContentFooter = () => {
 
   return (
 
-    <div className='content-div text-[#A4A4A5] tracking-wide flex justify-center '>
+    <div className='content-div text-[#A4A4A5] tracking-wide flex justify-center items-center flex-col'>
 
       <div className='content-container'>
         <p className='content'>Oynadığınız oyunlarla bütünleşmek istiyorsanız ve kullandığınız yazılımlarla yaratıcılığınızın doruklarına çıkmayı hedefliyorsanız, Monster Notebook size beklentilerinizin de ötesinde bir dünya sunuyor.</p>

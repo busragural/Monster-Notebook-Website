@@ -41,6 +41,10 @@ export const nameID = [
         id: 6867
     }, 
     {
+        name: "Oyuncu-Monitoru",
+        id: 6867
+    },
+    {
         name: "Aryond",
         id: 6752
     }, 
@@ -69,6 +73,22 @@ export const nameID = [
         name: "Tum-Laptoplar",
         id: 1105
     }, 
+    {
+        name: "Oyun-Bilgisayarlari",
+        id:6224
+    },
+    {
+        name: "Aksesuarlar",
+        id:6884
+    },
+    {
+        name: "Is-Bilgisayarlari",
+        id:6453
+    },
+    {
+        name: "Is-Istasyonlari",
+        id: 6515
+    }
 
 ]
 

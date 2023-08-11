@@ -14,6 +14,7 @@ module.exports = {
       },
     },
 
+
     screens: {
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
@@ -29,9 +30,13 @@ module.exports = {
 
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
-    }
+    },
 
-
+    borderWith: {
+      DEFAULT: '1px',
+      '1': '1px',
+    }, 
+  
   },
   plugins: [],
 }
